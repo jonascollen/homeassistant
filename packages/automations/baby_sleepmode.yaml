@@ -1,0 +1,32 @@
+
+# Jonas Workmode - Aktiverar Hue-Scen i kontoret
+
+automation:
+  - alias: Baby Sleepmode
+    trigger:
+      - platform: state
+        entity_id: input_boolean.baby_sleepmode
+        to: "on"
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: light.sovrum
+
+  - alias: Baby Sleepmode - Off
+    trigger:
+      - platform: state
+        entity_id: input_boolean.baby_sleepmode
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: input_boolean.inside_lights
+        state: "on"
+    action:
+      - service: hue.hue_activate_scene
+        data:
+          group_name: "Sovrum"
+          scene_name: "Sovrum_evening"
+  
+
+  
+  

@@ -1,0 +1,19 @@
+jonas_workmode:
+  name: Jonas Nattjobb
+  icon: mdi:briefcase
+
+baby_sleepmode:
+  name: Baby Sleepmode
+  icon: mdi:sleep
+
+inside_lights:
+  name: Belysning
+  icon: mdi:lamp
+
+outside_lights:
+  name: Utebelysning
+  icon: mdi:lamp
+
+nightlights_malin:
+  name: Nattlampa
+  icon: mdi:lamp

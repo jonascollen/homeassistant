@@ -1,0 +1,46 @@
+
+# Jonas Workmode - Aktiverar Hue-Scen i kontoret
+
+automation:
+  - alias: Jonas Workmode - On
+    trigger:
+      - platform: state
+        entity_id: input_boolean.jonas_workmode
+        to: "on"
+    action:
+      - service: hue.hue_activate_scene
+        data:
+          group_name: "Kontor"
+          scene_name: "Kontor_nightmode"
+  
+  - alias: Jonas Workmode - Off/Turn on lights
+    trigger:
+      - platform: state
+        entity_id: input_boolean.jonas_workmode
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: input_boolean.inside_lights
+        state: "on"
+    action:
+      - service: hue.hue_activate_scene
+        data:
+          group_name: "Kontor"
+          scene_name: "Kontor_daily"
+
+
+  - alias: Jonas Workmode - Off/Turn off lights
+    trigger:
+      - platform: state
+        entity_id: input_boolean.jonas_workmode
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: input_boolean.inside_lights
+        state: "off"
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: light.kontor
+
+  

@@ -1,0 +1,80 @@
+
+# Jonas Workmode - Aktiverar Hue-Scen i kontoret
+
+automation:
+  - alias: Inside Lights - Some lights on Baby sleeps
+    trigger:
+      - platform: state
+        entity_id: input_boolean.inside_lights
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: input_boolean.baby_sleepmode
+        state: "on"
+    action:
+      - service: hue.hue_activate_scene
+        data:
+          group_name: "Vardagsbelysning"
+          scene_name: "Evening_nobedroom"
+  
+  - alias: Inside Lights - All lights on Baby awake
+    trigger:
+      - platform: state
+        entity_id: input_boolean.inside_lights
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: input_boolean.baby_sleepmode
+        state: "off"
+    action:
+      - service: hue.hue_activate_scene
+        data:
+          group_name: "Vardagsbelysning"
+          scene_name: "Evening_all"
+  
+  
+  - alias: Inside Lights - All lights off 
+    trigger:
+      - platform: state
+        entity_id: input_boolean.inside_lights
+        to: "off"
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: light.vardagsbelysning
+  
+
+  - alias: Inside Lights - Turn on lights around sunset
+    trigger:
+      - platform: sun
+        event: sunset
+        offset: "-00:45:00"
+    condition:
+      - condition: state
+        entity_id: group.family
+        state: "home"
+    action:
+      - service: input_boolean.turn_on
+        data:
+          entity_id: input_boolean.inside_lights
+
+
+  - alias: Motion Sensor Lights On
+    trigger:
+      platform: state
+      entity_id: binary_sensor.kitchen
+      to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: "22:30"
+          before: "06:00"
+        - condition: state
+          entity_id: input_boolean.inside_lights
+          state: "off"
+    action:
+      - service: hue.hue_activate_scene
+        data:
+          group_name: "Vardagsrum"
+          scene_name: "Nightlight"  

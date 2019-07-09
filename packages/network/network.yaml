@@ -1,0 +1,11 @@
+sensor: 
+  - platform: template
+    sensors:
+      router_downstream:
+          value_template: '{{ ((states.sensor.mikrotik_router_kbyte_sec_received.state | int) / 1024) | round(2) }}'
+          friendly_name: 'Nedströms'
+          unit_of_measurement: 'Mb/s'
+      router_upstream:
+          value_template: '{{ ((states.sensor.mikrotik_router_kbyte_sec_sent.state | int) / 1024) | round(2) }}'
+          friendly_name: 'Uppströms'
+          unit_of_measurement: 'Mb/s'

@@ -1,0 +1,67 @@
+group:
+  doors:
+    name: Dörrar
+    view: no
+    entities:
+      - binary_sensor.maindoor
+      - binary_sensor.backdoor
+
+  movement:
+    name: Rörelsesensorer
+    entities:
+      - binary_sensor.hallway
+      - binary_sensor.kitchen
+
+  water:
+    name: Vattensensorer
+    entities:
+      - binary_sensor.hallway
+
+sensor: 
+  - platform: template
+    sensors:
+      doors:
+        friendly_name: "Dörrar"
+        value_template: >-
+          {% if is_state('group.doors', 'off') %}
+            Stängda
+          {% else %}
+            Öppna
+          {% endif %}
+        icon_template: >-
+          {% if is_state('group.doors', 'off') %}
+            mdi:door
+          {% else %}
+            mdi:door-open
+          {% endif %}
+
+      movement:
+        friendly_name: "Rörelsesensorer"
+        value_template: >-
+          {% if is_state('group.movement', 'off') %}
+            Klart
+          {% else %}
+            Detekterat
+          {% endif %}
+        icon_template: >-
+          {% if is_state('group.movement', 'off') %}
+            mdi:run-fast
+          {% else %}
+            mdi:exit-run
+          {% endif %}
+
+      water:
+        friendly_name: "Vattensensorer"
+        value_template: >-
+          {% if is_state('group.water', 'off') %}
+            Klart
+          {% else %}
+            Detekterat
+          {% endif %}
+        icon_template: >-
+          {% if is_state('group.water', 'off') %}
+            mdi:water-outline
+          {% else %}
+            mdi:water-pump
+          {% endif %}
+

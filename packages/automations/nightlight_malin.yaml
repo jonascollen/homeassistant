@@ -1,0 +1,56 @@
+
+# Sovrum Nattlampa - Aktiverar Hue-Scen på Malins läslampa
+
+automation:
+  - alias: Nattlampa Malin - On
+    trigger:
+      - platform: state
+        entity_id: input_boolean.nightlights_malin
+        to: "on"
+    action:
+      - service: hue.hue_activate_scene
+        data:
+          group_name: "Sovrum Malin"
+          scene_name: "Redlight"
+  
+  - alias: Nattlampa Malin - Off/All lights on Baby awake
+    trigger:
+      - platform: state
+        entity_id: input_boolean.nightlights_malin
+        to: "off"
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.inside_lights
+          state: "on"
+        - condition: state
+          entity_id: input_boolean.baby_sleepmode
+          state: "off"
+    action:
+      - service: hue.hue_activate_scene
+        data:
+          group_name: "Sovrum"
+          scene_name: "Sovrum_evening"
+  
+
+  - alias: Nattlampa Malin - Off/Turn off lights
+    trigger:
+      - platform: state
+        entity_id: input_boolean.nightlights_malin
+        to: "off"
+    condition:
+      condition: or
+      conditions:
+        - condition: state
+          entity_id: input_boolean.baby_sleepmode
+          state: "on"
+        - condition: state
+          entity_id: input_boolean.inside_lights
+          state: "off"
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: light.hue_color_candle_1
+
+  

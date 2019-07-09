@@ -1,0 +1,19 @@
+- name: home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  radius: 100
+  icon: mdi:home
+  
+- name: jonaswork
+  latitude: !secret jonas_work_latitude
+  longitude: !secret jonas_work_longitude
+  radius: 150
+  icon: mdi:office-building
+
+- name: malinwork
+  latitude: !secret malin_work_latitude
+  longitude: !secret malin_work_longitude
+  radius: 150
+  icon: mdi:office-building
+
+

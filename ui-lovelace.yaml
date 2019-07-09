@@ -1,0 +1,35 @@
+title: !secret title_address
+
+resources:
+  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.2
+    type: module
+  - url: /local/custom-lovelace/clock-card.js
+    type: js
+  - url: /local/custom-lovelace/card-tools.js
+    type: js
+  - url: /local/custom-lovelace/popup-card.js
+    type: js
+  - url: /local/custom-lovelace/layout-card.js
+    type: js
+  - url: https://cdn.jsdelivr.net/gh/bramkragten/custom-ui@master/weather-card/weather-card.min.js
+    type: module
+  - url: /local/custom-lovelace/simple-weather-card.bundle.js?v=0.3.0
+    type: module    
+  - url: /local/custom-lovelace/mini-graph-card-bundle.js?v=0.4.3
+    type: module
+  - url: /local/custom-lovelace/mini-media-player-bundle.js?v=1.1.3
+    type: module
+  - url: /local/custom-lovelace/button-card.js
+    type: module
+  - url: /local/custom-lovelace/slider-entity-row.js
+    type: module
+#  - url: /local/custom-lovelace/weather-card/weather-card.js
+#    type: module
+  - url: /community_plugin/calendar-card/calendar-card.js
+    type: js
+
+background: center / cover no-repeat url("/local/backgrounds/background_20.png") fixed
+views:
+  - !include lovelace/00_homeview.yaml    
+  - !include lovelace/10_security.yaml   
+

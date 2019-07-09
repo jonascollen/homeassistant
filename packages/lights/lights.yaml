@@ -1,0 +1,16 @@
+group:
+  lampor:
+    name: Belysning
+    view: no
+    entities:
+      - light.hall
+      - light.kok
+      - light.kontor
+      - light.sovrum
+      - light.vardagsrum
+
+  utebelysning:
+    name: Utebelysning
+    view: no
+    entities:
+      - light.vardagsrum

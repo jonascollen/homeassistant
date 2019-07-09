@@ -1,0 +1,42 @@
+sensor:
+  - platform: template
+    sensors:
+      trash_pickup_day:
+        friendly_name: Avfall
+        value_template: >-
+          {% set pickupday = strptime(states.calendar['sophamtningavfall'].attributes.start_time, "%Y-%m-%d %H:%M:%S").strftime("%A") %}
+          {% set pickupday2 = strptime(states.calendar['sophamtningavfall'].attributes.start_time, "%Y-%m-%d %H:%M:%S").strftime("%d/%m/%Y") %}
+          {% if as_timestamp(states.calendar.sophamtningavfall.attributes.start_time) / 86400 - as_timestamp(as_timestamp(now()) | timestamp_custom("%Y-%m-%d 00:00:00",true)) / 86400 == 0.0 %}
+          Idag!
+          {% elif as_timestamp(states.calendar.sophamtningavfall.attributes.start_time) / 86400 - as_timestamp(as_timestamp(now()) | timestamp_custom("%Y-%m-%d 00:00:00",true)) / 86400 == 1.0 %}
+          Imorgon!
+          {% elif as_timestamp(states.calendar.sophamtningavfall.attributes.start_time) / 86400 - as_timestamp(as_timestamp(now()) | timestamp_custom("%Y-%m-%d 00:00:00",true)) / 86400 >= 7.0 %}
+          {{ pickupday2 }}
+          {% elif as_timestamp(states.calendar.sophamtningavfall.attributes.start_time) / 86400 - as_timestamp(as_timestamp(now()) | timestamp_custom("%Y-%m-%d 00:00:00",true)) / 86400 >= 2.0 %}
+          {{ pickupday }}
+          {% else %}
+          Unknown
+          {% endif %}
+        entity_picture_template: >-
+          /local/trash/greenbin.png
+        icon_template: 'mdi:trash-can'
+
+      plastic_pickup_day:
+        friendly_name: Plast
+        value_template: >-
+          {% set pickupday = strptime(states.calendar['sophamtningplast'].attributes.start_time, "%Y-%m-%d %H:%M:%S").strftime("%A") %}
+          {% set pickupday2 = strptime(states.calendar['sophamtningplast'].attributes.start_time, "%Y-%m-%d %H:%M:%S").strftime("%d/%m/%Y") %}
+          {% if as_timestamp(states.calendar.sophamtningplast.attributes.start_time) / 86400 - as_timestamp(as_timestamp(now()) | timestamp_custom("%Y-%m-%d 00:00:00",true)) / 86400 == 0.0 %}
+          Idag!
+          {% elif as_timestamp(states.calendar.sophamtningplast.attributes.start_time) / 86400 - as_timestamp(as_timestamp(now()) | timestamp_custom("%Y-%m-%d 00:00:00",true)) / 86400 == 1.0 %}
+          Imorgon!
+          {% elif as_timestamp(states.calendar.sophamtningplast.attributes.start_time) / 86400 - as_timestamp(as_timestamp(now()) | timestamp_custom("%Y-%m-%d 00:00:00",true)) / 86400 >= 7.0 %}
+          {{ pickupday2 }}
+          {% elif as_timestamp(states.calendar.sophamtningplast.attributes.start_time) / 86400 - as_timestamp(as_timestamp(now()) | timestamp_custom("%Y-%m-%d 00:00:00",true)) / 86400 >= 2.0 %}
+          {{ pickupday }}
+          {% else %}
+          Unknown
+          {% endif %}
+        entity_picture_template: >-
+          /local/trash/bluebin.png          
+        icon_template: 'mdi:recycle'

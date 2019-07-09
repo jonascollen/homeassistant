@@ -1,0 +1,413 @@
+icon: mdi:castle
+name: Home
+
+popup_cards:
+  sensor.jonas:
+    title: Jonas
+    card:
+      type: entities
+      entities:
+        - entity: sensor.s9_battery
+          name: S9+ Batteri
+          icon: mdi:battery
+        - entity: sensor.jonas
+          name: Plats
+          secondary_info: last-changed
+          icon: mdi:map-marker-circle
+        - entity: device_tracker.jonas_jonass9
+          name: Jonas S9+
+          icon: mdi:cellphone
+          secondary_info: last-changed
+        - entity: device_tracker.jonas_s9
+          name: Jonas Wifi
+          icon: mdi:wifi
+          secondary_info: last-changed
+
+  sensor.malin:
+    title: Malin
+    card:
+      type: entities
+      entities:
+        - entity: sensor.malins9_battery
+          name: S9 Batteri
+          icon: mdi:battery
+        - entity: sensor.malin
+          name: Plats
+          secondary_info: last-changed
+          icon: mdi:map-marker-circle
+        - entity: device_tracker.malin_s9
+          name: Malin S9
+          icon: mdi:cellphone
+          secondary_info: last-changed
+        - entity: device_tracker.malin_s9
+          name: Malin Wifi
+          icon: mdi:wifi
+          secondary_info: last-changed
+      
+cards:
+    - type: custom:compact-custom-header
+      main_config: true
+      background: 'rgba(150, 150, 150, 0.2)'
+      menu: show
+      options: show
+      voice: show
+      notifications: clock
+      clock_format: '24'
+      clock_date: true
+      date_locale: sv-SE
+      disable: false
+
+    # Kolumn 1
+    - type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: picture-entity
+              entity: sensor.jonas
+              show_name: true
+              tap_action:
+                action: more-info
+              state_image:
+                "Hemma": /local/profiles/jonas.jpg
+                "Borta": /local/profiles/jonasbw.jpg
+                "Maxi": /local/profiles/jonasbw.jpg
+                "Telia": /local/profiles/jonasbw.jpg 
+              
+            - type: picture-entity
+              entity: sensor.malin
+              show_name: true
+              tap_action:
+                action: more-info
+              state_image:
+                "Hemma": /local/profiles/malin.jpg
+                "Borta": /local/profiles/malinbw.jpg
+                "Maxi": /local/profiles/malinbw.jpg
+                "EY": /local/profiles/malinbw.jpg 
+
+
+        - type: entity-filter
+          #show_header_toggle: false
+          state_filter:
+            - "on"
+            - "Stängda"
+            - "Klart"
+          entities:
+            - entity: sensor.water
+              name: "Vattensensorer"     
+            - entity: sensor.doors
+              name: "Dörrar"
+            - entity: sensor.movement
+              name: "Rörelsesensorer"      
+            - entity: binary_sensor.maindoor
+              name: Entré
+            - entity: binary_sensor.maindoor
+              name: Vardagsrum
+            - entity: binary_sensor.maindoor
+              name: Kök
+            - entity: binary_sensor.backdoor
+              name: Tvättstuga
+
+            - type: divider
+
+            - entity: binary_sensor.maindoor
+              name: Balkong sovrum
+            - entity: binary_sensor.backdoor
+              name: Balkong barnrum
+
+            - type: divider
+
+            - entity: binary_sensor.backdoor
+              icon: mdi:garage-open
+              name: Garage
+
+            - type: divider
+
+            - entity: binary_sensor.hallway
+              name: Hall
+            - entity: binary_sensor.kitchen
+              name: Kök
+            - type: divider
+          #card: 
+          #  type: glance
+
+        - type: entities
+          entities:
+            - entity: sensor.trash_pickup_day
+              name: "Rest- & matavfall"
+            - type: divider
+            - entity: sensor.plastic_pickup_day
+              name: "Plast- & metallavfall"
+
+        # Media
+        - type: custom:mini-media-player
+          entity: media_player.vardagsrum
+          name: Sonos Vardagsrum
+          #artwork: cover
+          hide:
+            power: true
+            icon: true
+            source: false
+          icon: mdi:spotify
+          speaker_group:
+            platform: sonos
+            show_group_count: true
+            entities:
+              - entity_id: media_player.vardagsrum
+                name: Sonos Vardagsrum
+              - entity_id: media_player.badrum
+                name: Sonos Badrum
+              - entity_id: media_player.sovrum
+                name: Sonos Sovrum
+
+    ## Kolumn 2
+    - type: vertical-stack
+      cards:
+
+        - type: horizontal-stack
+          cards:
+            # Belysning ute
+            - type: picture-entity
+              state_image:
+                "on": /local/house/inside.jpg
+                "off": /local/house/insidebw.jpg
+              tap_action:
+                action: call-service
+                service: input_boolean.toggle
+                service_data:
+                  entity_id: input_boolean.inside_lights
+              entity: input_boolean.inside_lights
+
+            # Belysning
+            - type: picture-entity
+              state_image:
+                "on": /local/house/outside.jpg
+                "off": /local/house/outsidebw.jpg
+              tap_action:
+                action: call-service
+                service: input_boolean.toggle
+                service_data:
+                  entity_id: input_boolean.outside_lights
+              entity: input_boolean.outside_lights
+
+        # Enskilda lampor
+        - type: entities
+          entities:
+            - type: custom:slider-entity-row
+              entity: light.vardagsrum
+              hide_when_off: true
+              toggle: true
+              icon: mdi:sofa
+            - type: custom:slider-entity-row
+              entity: light.kok
+              hide_when_off: true
+              toggle: true
+              icon: mdi:fridge-outline
+            - type: custom:slider-entity-row
+              entity: light.kontor
+              hide_when_off: true
+              toggle: true
+              icon: mdi:laptop
+            - type: custom:slider-entity-row
+              entity: light.sovrumsfonster
+              hide_when_off: true
+              toggle: true
+              icon: mdi:bed-empty
+            - type: custom:slider-entity-row
+              entity: light.hue_color_candle_1
+              name: Malins Läslampa
+              hide_when_off: true
+              toggle: true
+              icon: mdi:lamp
+            - type: custom:slider-entity-row
+              entity: light.hue_color_candle_1_2
+              name: Jonas Läslampa
+              hide_when_off: true
+              toggle: true
+              icon: mdi:lamp
+            - type: custom:slider-entity-row
+              entity: light.hall_2   
+              hide_when_off: true
+              toggle: true
+              icon: mdi:lamp
+ 
+
+        - type: horizontal-stack
+          cards:
+            # Belysning
+            - type: picture-entity
+              state_image:
+                "on": /local/buttons/sleepingbaby.jpg
+                "off": /local/buttons/sleepingbabybw.jpg
+              name: Sleepmode
+              tap_action:
+                action: call-service
+                service: input_boolean.toggle
+                service_data:
+                  entity_id: input_boolean.baby_sleepmode
+              entity: input_boolean.baby_sleepmode
+
+            - type: picture-entity
+              state_image:
+                "on": /local/buttons/nattlampa.jpg
+                "off": /local/buttons/nattlampabw.jpg
+              name: Nattlampa
+              tap_action:
+                action: call-service
+                service: input_boolean.toggle
+                service_data:
+                  entity_id: input_boolean.nightlights_malin
+              entity: input_boolean.nightlights_malin
+
+
+            - type: picture-entity
+              state_image:
+                "on": /local/buttons/work.jpg
+                "off": /local/buttons/workbw.jpg
+              name: Nattjobb
+              tap_action:
+                action: call-service
+                service: input_boolean.toggle
+                service_data:
+                  entity_id: input_boolean.jonas_workmode
+              entity: input_boolean.jonas_workmode
+
+                   
+    ## Kolumn 3
+    - type: vertical-stack
+      cards:
+
+        - type: custom:simple-weather-card
+          entity: weather.smhi_home
+          name: Jönköping
+
+        - type: glance
+          show_header_toggle: false
+          show_icon: true
+          entities:
+            - entity: sensor.toptemp_2
+              name: Vardagsrum
+            - entity: sensor.toptemp_2
+              name: Sovrum
+            - entity: sensor.toptemp_2
+              name: Tvättstuga       
+
+        - type: glance
+          show_header_toggle: false
+          show_icon: true
+          entities:
+            - entity: sensor.router_downstream
+              icon: mdi:arrow-down-bold
+            - entity: sensor.router_upstream
+              icon: mdi:arrow-up-bold
+            - entity: sensor.plex
+              icon: mdi:television
+              
+        - type: conditional
+          conditions: 
+          - entity: media_player.plex_chromecast
+            state: "playing"
+          card:
+            type: custom:mini-media-player
+            entity: media_player.plex_chromecast
+            icon: mdi:tv
+            artwork: cover
+            name: TV
+            hide:
+              volume: true
+              source: true
+              power_state: true
+              power: true
+              name: false
+
+
+        - type: custom:calendar-card
+          title: "Kalender"
+          progressBar: false
+          timeFormat: "HH:mm"
+          numberOfDays: 14
+          entities:
+            - calendar.familj
+
+    # ## Column 3 - Sensorer
+    # - type: custom:mini-graph-card
+    #   entities: 
+    #    - sensor.toptemp_2
+    #   name: Vardagsrum
+    #   height: 46
+    #   line_width: 2
+    #   font_size: 65
+    #   hours_to_show: 48
+    #   points_per_hour: 2
+    #   show:
+    #     icon: true
+    #     extrema: true
+    #   color_thresholds:
+    #     - value: 28
+    #       color: "#e74c3c"
+    #     - value: 26
+    #       color: "#f2641d"
+    #     - value: 21
+    #       color: "#1db954"
+    #     - value: 15
+    #       color: "#25f7bb"
+    #     - value: 0
+    #       color: "#3498db"
+
+    # - type: horizontal-stack
+    #   cards:
+    #     - type: custom:mini-graph-card
+    #       entities: 
+    #        - sensor.toptemp_3
+    #       name: Luftfuktighet
+    #       height: 74
+    #       line_width: 2
+    #       font_size: 65
+    #       hours_to_show: 48
+    #       points_per_hour: 0.1
+    #       show:
+    #         icon: true
+    #         extrema: true
+    #       color_thresholds:
+    #         - value: 60
+    #           color: "#d80a0a"
+    #         - value: 40
+    #           color: "#1acc0e"
+    #         - value: 0
+    #           color: "#aa2c2c"
+          
+    #     - type: custom:mini-graph-card
+    #       entities: 
+    #        - sensor.plex
+    #       name: Plex
+    #       hours_to_show: 72
+    #       points_per_hour: 0.5
+    #       show:
+    #         icon: false
+    #         extrema: false
+    #       color_thresholds:
+    #         - value: 6
+    #           color: "#e74c3c"
+    #         - value: 3
+    #           color: "#1db3b9"
+    #         - value: 0
+    #           color: "#1db954"
+
+    # - type: custom:mini-graph-card
+    #   name: Internet
+    #   icon: mdi:server-network
+    #   hours_to_show: 168
+    #   points_per_hour: 0.25
+    #   show:
+    #     icon: false
+    #     extrema: false
+    #     name: true
+    #     state: false
+    #     legend: false
+    #   entities:
+    #     - entity: sensor.mikrotik_router_kbyte_sec_received
+    #       name: Nerström
+    #     - entity: sensor.mikrotik_router_kbyte_sec_sent
+    #      name: Uppström
+
+
+             
