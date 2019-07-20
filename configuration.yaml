@@ -20,7 +20,6 @@ default_config:
 ssdp:
 zeroconf:
 
-
 # Fail2ban
 logger:
   default: critical

@@ -3,19 +3,27 @@ group:
     name: Dörrar
     view: no
     entities:
-      - binary_sensor.maindoor
-      - binary_sensor.backdoor
+      - binary_sensor.entre_door
+      - binary_sensor.kitchen_door
+      - binary_sensor.livingroom_door
+      - binary_sensor.washroom_door
+      - binary_sensor.bedroom_door
+      - binary_sensor.kidsroom_door
 
   movement:
     name: Rörelsesensorer
     entities:
-      - binary_sensor.hallway
-      - binary_sensor.kitchen
+      - binary_sensor.garage_move
+      - binary_sensor.kitchen_move
+      - binary_sensor.hallway_move
+      - binary_sensor.upstairs_move
 
   water:
     name: Vattensensorer
     entities:
-      - binary_sensor.hallway
+      - binary_sensor.cleaningroom_water
+      - binary_sensor.kitchen_water
+      - binary_sensor.waterheater_water
 
 sensor: 
   - platform: template
