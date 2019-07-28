@@ -25,30 +25,25 @@ cards:
         show_header_toggle: false
         title: Dörrar
         entities:
-          - entity: binary_sensor.maindoor
+          - entity: binary_sensor.entre_door
             name: Entré
             secondary_info: last-changed
-          - entity: binary_sensor.backdoor
-            name: Vardagsrum
-            secondary_info: last-changed
-          - entity: binary_sensor.backdoor
+          - entity: binary_sensor.kitchen_door
             name: Kök
             secondary_info: last-changed
-          - entity: binary_sensor.backdoor
+          - entity: binary_sensor.livingroom_door
+            name: Vardagsrum
+            secondary_info: last-changed
+          - entity: binary_sensor.washroom_door
             name: Tvättstuga
             secondary_info: last-changed
           - type: divider
-          - entity: binary_sensor.backdoor
+          - entity: binary_sensor.kidsroom_door
             name: Barnrum
             secondary_info: last-changed
-          - entity: binary_sensor.backdoor
+          - entity: binary_sensor.bedroom_door
             name: Sovrum
-            secondary_info: last-changed
-          - type: divider
-          - entity: binary_sensor.backdoor
-            icon: mdi:garage
-            name: Garage
-            secondary_info: last-changed    
+            secondary_info: last-changed 
 
 
 
@@ -59,23 +54,29 @@ cards:
         title: Rörelsesensorer
         show_header_toggle: false
         entities:
-          - entity: binary_sensor.hallway
-            name: Hall
+          - entity: binary_sensor.garage_move
+            name: Garage
             secondary_info: last-changed
-          - entity: binary_sensor.kitchen
+          - entity: binary_sensor.kitchen_move
             name: Kök
             secondary_info: last-changed
-          - entity: binary_sensor.kitchen
-            name: Tvättstuga
+          - entity: binary_sensor.hallway_move
+            name: Hall
             secondary_info: last-changed
-          - entity: binary_sensor.kitchen
-            name: Vardagsrum
+          - entity: binary_sensor.upstairs_move
+            name: Övervåning
             secondary_info: last-changed
 
       - type: entities
         title: Vattensensorer
         show_header_toggle: false
         entities:
-          - entity: binary_sensor.hallway
-            name: Hall
+          - entity: binary_sensor.cleaningroom_water
+            name: Tvättstuga
+            secondary_info: last-changed
+          - entity: binary_sensor.waterheater_water
+            name: Varmvattenberedare
+            secondary_info: last-changed
+          - entity: binary_sensor.kitchen_water
+            name: Kök
             secondary_info: last-changed

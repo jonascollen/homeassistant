@@ -9,7 +9,11 @@ secrets.yaml
 tts/
 www/custom-lovelace/
 www/community/
+<<<<<<< HEAD
 *__pycache__*
+=======
+logs/
+>>>>>>> c407442e9c83215d67cb12c96313075bcd76d9fe
 home-assistant_v2.db-shm
 home-assistant_v2.db-wal
 .google.token

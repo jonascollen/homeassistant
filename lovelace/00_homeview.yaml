@@ -7,16 +7,16 @@ popup_cards:
     card:
       type: entities
       entities:
-        - entity: sensor.s9_battery
-          name: S9+ Batteri
-          icon: mdi:battery
+        # - entity: sensor.s9_battery
+        #   name: S9+ Batteri
+        #   icon: mdi:battery
         - entity: sensor.jonas
           name: Plats
           secondary_info: last-changed
           icon: mdi:map-marker-circle
-        - entity: device_tracker.jonas_jonass9
-          name: Jonas S9+
-          icon: mdi:cellphone
+        # - entity: device_tracker.jonas_jonass9
+        #   name: Jonas S9+
+        #   icon: mdi:cellphone
           secondary_info: last-changed
         - entity: device_tracker.jonas_s9
           name: Jonas Wifi
@@ -28,9 +28,6 @@ popup_cards:
     card:
       type: entities
       entities:
-        - entity: sensor.malins9_battery
-          name: S9 Batteri
-          icon: mdi:battery
         - entity: sensor.malin
           name: Plats
           secondary_info: last-changed
@@ -98,35 +95,35 @@ cards:
               name: "Dörrar"
             - entity: sensor.movement
               name: "Rörelsesensorer"      
-            - entity: binary_sensor.maindoor
+            - entity: binary_sensor.entre_door
               name: Entré
-            - entity: binary_sensor.maindoor
-              name: Vardagsrum
-            - entity: binary_sensor.maindoor
+            - entity: binary_sensor.kitchen_door
               name: Kök
-            - entity: binary_sensor.backdoor
+            - entity: binary_sensor.livingroom_door
+              name: Vardagsrum
+            - entity: binary_sensor.washroom_door
               name: Tvättstuga
-
-            - type: divider
-
-            - entity: binary_sensor.maindoor
+            - entity: binary_sensor.bedroom_door
               name: Balkong sovrum
-            - entity: binary_sensor.backdoor
+            - entity: binary_sensor.kidsroom_door
               name: Balkong barnrum
 
-            - type: divider
-
-            - entity: binary_sensor.backdoor
-              icon: mdi:garage-open
+            - entity: binary_sensor.garage_move
               name: Garage
-
-            - type: divider
-
-            - entity: binary_sensor.hallway
-              name: Hall
-            - entity: binary_sensor.kitchen
+            - entity: binary_sensor.kitchen_move
               name: Kök
-            - type: divider
+            - entity: binary_sensor.hallway_move
+              name: Kök
+            - entity: binary_sensor.upstairs_move
+              name: Kök
+
+            - entity: binary_sensor.kitchen_water
+              name: Kök
+            - entity: binary_sensor.waterheater_water
+              name: Varmvattenberedare
+            - entity: binary_sensor.washroom_water
+              name: Tvättstuga
+
           #card: 
           #  type: glance
 
@@ -138,7 +135,7 @@ cards:
             - entity: sensor.plastic_pickup_day
               name: "Plast- & metallavfall"
 
-        # Media
+        # # Media
         - type: custom:mini-media-player
           entity: media_player.vardagsrum
           name: Sonos Vardagsrum
@@ -154,10 +151,10 @@ cards:
             entities:
               - entity_id: media_player.vardagsrum
                 name: Sonos Vardagsrum
-              - entity_id: media_player.badrum
-                name: Sonos Badrum
-              - entity_id: media_player.sovrum
-                name: Sonos Sovrum
+              - entity_id: media_player.kok
+                name: Sonos Kök
+              - entity_id: media_player.overvaning
+                name: Sonos Övervåning
 
     ## Kolumn 2
     - type: vertical-stack
@@ -208,24 +205,34 @@ cards:
               toggle: true
               icon: mdi:laptop
             - type: custom:slider-entity-row
+              entity: light.gastrum
+              hide_when_off: true
+              toggle: true
+              icon: mdi:account-multiple
+            - type: custom:slider-entity-row
+              entity: light.overvaning
+              hide_when_off: true
+              toggle: true
+              icon: mdi:stairs            
+            - type: custom:slider-entity-row
               entity: light.sovrumsfonster
               hide_when_off: true
               toggle: true
               icon: mdi:bed-empty
             - type: custom:slider-entity-row
-              entity: light.hue_color_candle_1
+              entity: light.laslampa_malin
               name: Malins Läslampa
               hide_when_off: true
               toggle: true
               icon: mdi:lamp
             - type: custom:slider-entity-row
-              entity: light.hue_color_candle_1_2
+              entity: light.laslampa_jonas
               name: Jonas Läslampa
               hide_when_off: true
               toggle: true
               icon: mdi:lamp
             - type: custom:slider-entity-row
-              entity: light.hall_2   
+              entity: light.hall 
               hide_when_off: true
               toggle: true
               icon: mdi:lamp
@@ -284,12 +291,12 @@ cards:
           show_header_toggle: false
           show_icon: true
           entities:
-            - entity: sensor.toptemp_2
-              name: Vardagsrum
-            - entity: sensor.toptemp_2
-              name: Sovrum
-            - entity: sensor.toptemp_2
-              name: Tvättstuga       
+            - entity: sensor.kitchen_temp
+              name: Kök
+            - entity: sensor.washroom_temp
+              name: Tvättstuga
+            - entity: sensor.bedroom_temp
+              name: Sovrum      
 
         - type: glance
           show_header_toggle: false

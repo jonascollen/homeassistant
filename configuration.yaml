@@ -20,7 +20,6 @@ default_config:
 ssdp:
 zeroconf:
 
-
 # Fail2ban
 logger:
   default: critical
@@ -65,12 +64,12 @@ recorder:
   purge_interval: 1
   include:
     entities:
-      - binary_sensor.backdoor
-      - binary_sensor.maindoor
+      - binary_sensor.kitchen_temp
+      - binary_sensor.bedroom_temp
+      - binary_sensor.washroom_temp
       - calendar.familj
       - calendar.sophamtningplast
       - calendar.sophamtningavfall
-      - device_tracker.jonas_jonass9
       - device_tracker.jonas_s9
       - device_tracker.malin_s9
       - sensor.jonas

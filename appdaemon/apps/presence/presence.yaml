@@ -1,0 +1,20 @@
+app_presence_jonas:
+  module: presence
+  class: a_better_presence
+  name: presence_jonas                       # name of the device in Hass
+  friendly_name: 'Jonas'
+  timer: 600                                  # timeout in seconds from just arrived to home and just left to away
+  update_time: 7200                           # how old reported values get to be before reporting not_home (2hr)
+  group_devices: group.jonas         # The group that contains the tracked devices
+entity_picture: /local/profiles/jonas.jpg
+
+
+app_presence_malin:
+  module: presence
+  class: a_better_presence
+  name: presence_malin                     # name of the device in Hass
+  friendly_name: 'Malin'
+  timer: 600                                  # timeout in seconds from just arrived to home and just left to away
+  update_time: 7200                           # how old reported values get to be before reporting not_home (2hr)
+  group_devices: group.malin        # The group that contains the tracked devices
+entity_picture: /local/profiles/malin.jpg
