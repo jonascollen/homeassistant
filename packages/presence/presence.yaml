@@ -3,78 +3,82 @@ group:
     name: Family
     view: no
     entities:
+      - device_tracker.presence_jonas
+      - device_tracker.presence_malin
+      #- device_tracker.malin_s9
+
+
+  jonas:
+    name: Jonas Devices
+    entities:
       - device_tracker.jonas_jonass9
       - device_tracker.jonas_s9
-      - device_tracker.malin_s9
 
+  malin:
+    name: Malins Devices
+    entities:
+      - device_tracker.malin_s9
 
 sensor:
 ## Presence-sensor for mainview     
   - platform: template
     sensors:
-        
+      family:
+        friendly_name: "Familj"
+        value_template: >-
+          {% if is_state('device_tracker.presence_jonas', 'Home') %}
+            home
+          {% elif is_state('device_tracker.presence_jonas', 'Just Arrived') %}
+            home
+          {% elif is_state('device_tracker.presence_malin', 'Home') %}
+            home
+          {% elif is_state('device_tracker.presence_malin', 'Just Arrived') %}
+            home
+          {% else %}
+            not_home
+          {% endif %}     
+
       jonas:
         friendly_name: "Jonas"
         value_template: >-
-          {% if is_state('device_tracker.jonas_jonass9', 'home') %}
+          {% if is_state('device_tracker.presence_jonas', 'Home') %}
             Hemma
-          {% elif is_state('device_tracker.jonas_jonass9', 'jonaswork') %}
+          {% elif is_state('device_tracker.presence_jonas', 'Just Arrived') %}
+            Hemma
+          {% elif is_state('device_tracker.presence_jonas', 'jonaswork') %}
             Telia
-          {% elif is_state('device_tracker.jonas_jonass9', 'maxi') %}
-            Maxi
-          {% elif is_state('device_tracker.jonas_s9', 'home') %}
-            Hemma
           {% else %}
             Borta
           {% endif %}
         entity_picture_template: >-
-          {% if is_state('device_tracker.jonas_jonass9', 'home') %}
+          {% if is_state('device_tracker.presence_jonas', 'Home') %}
             /local/profiles/jonas.jpg
-          {% elif is_state('device_tracker.jonas_s9', 'home') %}
+          {% elif is_state('device_tracker.presence_jonas', 'Just Arrived') %}
             /local/profiles/jonas.jpg
           {% else %}
             /local/profiles/jonasbw.jpg   
           {% endif %}
-        icon_template: >-
-          {% if is_state('device_tracker.jonas_jonass9', 'jonaswork') %}
-            mdi:briefcase
-          {% elif is_state('device_tracker.jonas_jonass9', 'maxi') %}
-            mdi:cart
-          {% else %}
-            mdi:walk
-          {% endif %}
+
           
       malin:
         friendly_name: "Malin"
         value_template: >-
-          {% if is_state('device_tracker.malin_s9', 'home') %}
+          {% if is_state('device_tracker.presence_malin', 'Home') %}
             Hemma
-          {% elif is_state('device_tracker.malin_s9', 'malinwork') %}
-            EY
-          {% elif is_state('device_tracker.malin_s9', 'maxi') %}
-            Maxi
+          {% elif is_state('device_tracker.presence_malin', 'Just Arrived') %}
+            Hemma
           {% else %}
             Borta
           {% endif %}
         entity_picture_template: >-
-          {% if is_state('device_tracker.malin_s9', 'home') %}
+          {% if is_state('device_tracker.presence_malin', 'Home') %}
             /local/profiles/malin.jpg
+          {% elif is_state('device_tracker.presence_malin', 'Just Arrived') %}
+            /local/profiles/malinbw.jpg
           {% else %}
             /local/profiles/malinbw.jpg          
           {% endif %}
-        icon_template: >-
-          {% if is_state('device_tracker.malin_s9', 'Maxi') %}
-            mdi:cart
-          {% else %}
-            mdi:walk
-          {% endif %}
 
-  - platform: template
-    sensors:
-      s9_battery:
-        friendly_name: 'S9 Battery'
-        value_template: '{{ states.device_tracker.jonas_jonass9.attributes.battery_level | round }}'
-        unit_of_measurement: '%'
 
 
 

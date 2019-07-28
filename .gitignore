@@ -9,6 +9,7 @@ secrets.yaml
 tts/
 www/custom-lovelace/
 www/community/
+logs/
 home-assistant_v2.db-shm
 home-assistant_v2.db-wal
 .google.token

@@ -51,7 +51,7 @@ automation:
         offset: "-00:45:00"
     condition:
       - condition: state
-        entity_id: group.family
+        entity_id: sensor.family
         state: "home"
     action:
       - service: input_boolean.turn_on
