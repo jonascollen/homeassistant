@@ -14,9 +14,9 @@ popup_cards:
           name: Plats
           secondary_info: last-changed
           icon: mdi:map-marker-circle
-        - entity: device_tracker.jonas_jonass9
-          name: Jonas S9+
-          icon: mdi:cellphone
+        # - entity: device_tracker.jonas_jonass9
+        #   name: Jonas S9+
+        #   icon: mdi:cellphone
           secondary_info: last-changed
         - entity: device_tracker.jonas_s9
           name: Jonas Wifi
@@ -28,9 +28,6 @@ popup_cards:
     card:
       type: entities
       entities:
-        - entity: sensor.malins9_battery
-          name: S9 Batteri
-          icon: mdi:battery
         - entity: sensor.malin
           name: Plats
           secondary_info: last-changed
@@ -139,25 +136,25 @@ cards:
               name: "Plast- & metallavfall"
 
         # # Media
-        # - type: custom:mini-media-player
-        #   entity: media_player.vardagsrum
-        #   name: Sonos Vardagsrum
-        #   #artwork: cover
-        #   hide:
-        #     power: true
-        #     icon: true
-        #     source: false
-        #   icon: mdi:spotify
-        #   speaker_group:
-        #     platform: sonos
-        #     show_group_count: true
-        #     entities:
-        #       - entity_id: media_player.vardagsrum
-        #         name: Sonos Vardagsrum
-        #       - entity_id: media_player.kok
-        #         name: Sonos Kök
-        #       - entity_id: media_player.overvaning
-        #         name: Sonos Övervåning
+        - type: custom:mini-media-player
+          entity: media_player.vardagsrum
+          name: Sonos Vardagsrum
+          #artwork: cover
+          hide:
+            power: true
+            icon: true
+            source: false
+          icon: mdi:spotify
+          speaker_group:
+            platform: sonos
+            show_group_count: true
+            entities:
+              - entity_id: media_player.vardagsrum
+                name: Sonos Vardagsrum
+              - entity_id: media_player.kok
+                name: Sonos Kök
+              - entity_id: media_player.overvaning
+                name: Sonos Övervåning
 
     ## Kolumn 2
     - type: vertical-stack
@@ -223,19 +220,19 @@ cards:
               toggle: true
               icon: mdi:bed-empty
             - type: custom:slider-entity-row
-              entity: light.hue_color_candle_1
+              entity: light.laslampa_malin
               name: Malins Läslampa
               hide_when_off: true
               toggle: true
               icon: mdi:lamp
             - type: custom:slider-entity-row
-              entity: light.hue_color_candle_1_2
+              entity: light.laslampa_jonas
               name: Jonas Läslampa
               hide_when_off: true
               toggle: true
               icon: mdi:lamp
             - type: custom:slider-entity-row
-              entity: light.hall_2   
+              entity: light.hall 
               hide_when_off: true
               toggle: true
               icon: mdi:lamp
