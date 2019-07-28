@@ -32,4 +32,4 @@ background: center / cover no-repeat url("/local/backgrounds/background_20.png")
 views:
   - !include lovelace/00_homeview.yaml    
   - !include lovelace/10_security.yaml   
-
+  - !include lovelace/20_weather.yaml   

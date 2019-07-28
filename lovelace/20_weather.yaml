@@ -1,0 +1,146 @@
+icon: mdi:cloud
+name: Weather
+cards:
+  - type: "custom:compact-custom-header"   
+    main_config: false
+    background: 'rgba(150, 150, 150, 0.2)'
+    menu: show
+    options: show
+    voice: show
+    notifications: clock
+    clock_format: '24'
+    clock_date: true
+    date_locale: en-gb
+    disable: false 
+
+
+  - type: vertical-stack
+    cards:
+      - type: custom:weather-card
+        entity: weather.smhi_home
+        icons: "/local/custom-lovelace/weather-card/icons/"
+
+
+  - type: vertical-stack
+    cards:
+      ## Column 3 - Sensorer
+      - type: custom:mini-graph-card
+        entities: 
+         - sensor.livingroom_temp
+        name: Vardagsrum
+        height: 46
+        line_width: 2
+        font_size: 65
+        hours_to_show: 48
+        points_per_hour: 2
+        show:
+          icon: true
+          extrema: true
+        color_thresholds:
+          - value: 28
+            color: "#e74c3c"
+          - value: 26
+            color: "#f2641d"
+          - value: 21
+            color: "#1db954"
+          - value: 15
+            color: "#25f7bb"
+          - value: 0
+            color: "#3498db"
+
+      - type: custom:mini-graph-card
+        entities: 
+         - sensor.kitchen_temp
+        name: Kök
+        height: 46
+        line_width: 2
+        font_size: 65
+        hours_to_show: 48
+        points_per_hour: 2
+        show:
+          icon: true
+          extrema: true
+        color_thresholds:
+          - value: 28
+            color: "#e74c3c"
+          - value: 26
+            color: "#f2641d"
+          - value: 21
+            color: "#1db954"
+          - value: 15
+            color: "#25f7bb"
+          - value: 0
+            color: "#3498db"
+
+      - type: custom:mini-graph-card
+        entities: 
+         - sensor.washroom_temp
+        name: Tvättstuga
+        height: 46
+        line_width: 2
+        font_size: 65
+        hours_to_show: 48
+        points_per_hour: 2
+        show:
+          icon: true
+          extrema: true
+        color_thresholds:
+          - value: 28
+            color: "#e74c3c"
+          - value: 26
+            color: "#f2641d"
+          - value: 21
+            color: "#1db954"
+          - value: 15
+            color: "#25f7bb"
+          - value: 0
+            color: "#3498db"
+
+      - type: custom:mini-graph-card
+        entities: 
+         - sensor.bedroom_temp
+        name: Sovrum
+        height: 46
+        line_width: 2
+        font_size: 65
+        hours_to_show: 48
+        points_per_hour: 2
+        show:
+          icon: true
+          extrema: true
+        color_thresholds:
+          - value: 28
+            color: "#e74c3c"
+          - value: 26
+            color: "#f2641d"
+          - value: 21
+            color: "#1db954"
+          - value: 15
+            color: "#25f7bb"
+          - value: 0
+            color: "#3498db"
+
+
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities: 
+             - sensor.washroom_temp_2
+            name: Luftfuktighet Tvättstuga
+            height: 74
+            line_width: 2
+            font_size: 65
+            hours_to_show: 48
+            points_per_hour: 0.1
+            show:
+              icon: true
+              extrema: true
+            color_thresholds:
+              - value: 60
+                color: "#d80a0a"
+              - value: 40
+                color: "#1acc0e"
+              - value: 0
+                color: "#aa2c2c"
