@@ -7,53 +7,32 @@ popup_cards:
     card:
       type: entities
       entities:
-        # - entity: sensor.s9_battery
-        #   name: S9+ Batteri
-        #   icon: mdi:battery
-        - entity: sensor.jonas
-          name: Plats
-          secondary_info: last-changed
+
+        - entity: device_tracker.presence_jonas
+          name: Pytrack
+          #secondary_info: last-changed
           icon: mdi:map-marker-circle
-        # - entity: device_tracker.jonas_jonass9
-        #   name: Jonas S9+
-        #   icon: mdi:cellphone
-          secondary_info: last-changed
+
         - entity: device_tracker.jonas_s9
           name: Jonas Wifi
           icon: mdi:wifi
-          secondary_info: last-changed
+          #secondary_info: last-changed
 
   sensor.malin:
     title: Malin
     card:
       type: entities
       entities:
-        - entity: sensor.malin
-          name: Plats
-          secondary_info: last-changed
+        - entity: device_tracker.presence_malin
+          name: Pytrack
+          #secondary_info: last-changed
           icon: mdi:map-marker-circle
-        - entity: device_tracker.malin_s9
-          name: Malin S9
-          icon: mdi:cellphone
-          secondary_info: last-changed
         - entity: device_tracker.malin_s9
           name: Malin Wifi
           icon: mdi:wifi
-          secondary_info: last-changed
+          #secondary_info: last-changed
       
 cards:
-    - type: custom:compact-custom-header
-      main_config: true
-      background: 'rgba(150, 150, 150, 0.2)'
-      menu: show
-      options: show
-      voice: show
-      notifications: clock
-      clock_format: '24'
-      clock_date: true
-      date_locale: sv-SE
-      disable: false
-
     # Kolumn 1
     - type: vertical-stack
       cards:
@@ -113,9 +92,9 @@ cards:
             - entity: binary_sensor.kitchen_move
               name: Kök
             - entity: binary_sensor.hallway_move
-              name: Kök
+              name: Hall
             - entity: binary_sensor.upstairs_move
-              name: Kök
+              name: Övervåning
 
             - entity: binary_sensor.kitchen_water
               name: Kök
@@ -245,6 +224,7 @@ cards:
               state_image:
                 "on": /local/buttons/sleepingbaby.jpg
                 "off": /local/buttons/sleepingbabybw.jpg
+              show_state: false
               name: Sleepmode
               tap_action:
                 action: call-service
@@ -258,6 +238,7 @@ cards:
                 "on": /local/buttons/nattlampa.jpg
                 "off": /local/buttons/nattlampabw.jpg
               name: Nattlampa
+              show_state: false
               tap_action:
                 action: call-service
                 service: input_boolean.toggle
@@ -271,6 +252,7 @@ cards:
                 "on": /local/buttons/work.jpg
                 "off": /local/buttons/workbw.jpg
               name: Nattjobb
+              show_state: false
               tap_action:
                 action: call-service
                 service: input_boolean.toggle
@@ -326,7 +308,6 @@ cards:
               power: true
               name: false
 
-
         - type: custom:calendar-card
           title: "Kalender"
           progressBar: false
@@ -334,87 +315,6 @@ cards:
           numberOfDays: 14
           entities:
             - calendar.familj
-
-    # ## Column 3 - Sensorer
-    # - type: custom:mini-graph-card
-    #   entities: 
-    #    - sensor.toptemp_2
-    #   name: Vardagsrum
-    #   height: 46
-    #   line_width: 2
-    #   font_size: 65
-    #   hours_to_show: 48
-    #   points_per_hour: 2
-    #   show:
-    #     icon: true
-    #     extrema: true
-    #   color_thresholds:
-    #     - value: 28
-    #       color: "#e74c3c"
-    #     - value: 26
-    #       color: "#f2641d"
-    #     - value: 21
-    #       color: "#1db954"
-    #     - value: 15
-    #       color: "#25f7bb"
-    #     - value: 0
-    #       color: "#3498db"
-
-    # - type: horizontal-stack
-    #   cards:
-    #     - type: custom:mini-graph-card
-    #       entities: 
-    #        - sensor.toptemp_3
-    #       name: Luftfuktighet
-    #       height: 74
-    #       line_width: 2
-    #       font_size: 65
-    #       hours_to_show: 48
-    #       points_per_hour: 0.1
-    #       show:
-    #         icon: true
-    #         extrema: true
-    #       color_thresholds:
-    #         - value: 60
-    #           color: "#d80a0a"
-    #         - value: 40
-    #           color: "#1acc0e"
-    #         - value: 0
-    #           color: "#aa2c2c"
-          
-    #     - type: custom:mini-graph-card
-    #       entities: 
-    #        - sensor.plex
-    #       name: Plex
-    #       hours_to_show: 72
-    #       points_per_hour: 0.5
-    #       show:
-    #         icon: false
-    #         extrema: false
-    #       color_thresholds:
-    #         - value: 6
-    #           color: "#e74c3c"
-    #         - value: 3
-    #           color: "#1db3b9"
-    #         - value: 0
-    #           color: "#1db954"
-
-    # - type: custom:mini-graph-card
-    #   name: Internet
-    #   icon: mdi:server-network
-    #   hours_to_show: 168
-    #   points_per_hour: 0.25
-    #   show:
-    #     icon: false
-    #     extrema: false
-    #     name: true
-    #     state: false
-    #     legend: false
-    #   entities:
-    #     - entity: sensor.mikrotik_router_kbyte_sec_received
-    #       name: Nerström
-    #     - entity: sensor.mikrotik_router_kbyte_sec_sent
-    #      name: Uppström
 
 
              

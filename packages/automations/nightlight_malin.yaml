@@ -13,6 +13,21 @@ automation:
           group_name: "Sovrum Malin"
           scene_name: "Redlight"
   
+  - alias: Nattlampa Malin - Off via Remote
+    trigger:
+      - platform: state
+        entity_id: light.laslampa_malin
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: input_boolean.nightlights_malin
+        state: "on"
+    action:
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.nightlights_malin
+
+  
   - alias: Nattlampa Malin - Off/All lights on Baby awake
     trigger:
       - platform: state
@@ -51,6 +66,6 @@ automation:
     action:
       - service: light.turn_off
         data:
-          entity_id: light.hue_color_candle_1
+          entity_id: light.laslampa_malin
 
   

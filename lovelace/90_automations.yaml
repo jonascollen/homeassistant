@@ -1,0 +1,42 @@
+icon: mdi:robot
+name: Automations
+cards:
+
+  - type: vertical-stack
+    cards:
+
+      - type: entities
+        show_header_toggle: true
+        title: Lights
+        entities:
+          - entity: automation.arriving_home
+          - entity: automation.leaving_home
+          - type: divider   
+          - entity: automation.inside_lights_turn_on_lights_around_sunset        
+          - entity: automation.inside_lights_all_lights_on_baby_awake
+          - entity: automation.inside_lights_some_lights_on_baby_sleeps
+          - entity: automation.inside_lights_all_lights_off
+          - entity: automatino_inside_lights_all_lights_off_nightlight_on
+          - type: divider
+          - entity: automation.motion_sensors_lights_on
+          - entity: automation.motion_sensors_lights_off
+          - type: divider
+          - entity: automation.baby_sleepmode
+          - entity: automation.baby_sleepmode_off
+          - type: divider
+          - entity: automation.nattlampa_malin_on
+          - entity: automation.nattlampa_malin_off_all_lights_on_baby_awake
+          - entity: automation.nattlampa_malin_off_turn_off_lights
+          - entity: automation.nattlampa_malin_off_via_remote
+          - type: divider
+          - entity: automation.jonas_workmode_on
+          - entity: automation.jonas_workmode_off_turn_off_lights
+          - entity: automation.jonas_workmode_off_turn_on_lights     
+  - type: vertical-stack
+    cards:                 
+      - type: entities
+        show_header_toggle: true
+        title: Other
+        entities:
+          - entity: automation.pause_sonos_when_playing_media
+          - entity: automation.set_theme_to_midnight 

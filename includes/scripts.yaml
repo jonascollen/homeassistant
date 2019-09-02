@@ -1,0 +1,8 @@
+  unrar_files:
+    alias: Unpack files on torrent vm
+    sequence:
+    - service: shell_command.unrar_files
+  remove_files:
+    alias: Remove files on torrent vm
+    sequence:
+    - service: shell_command.remove_files

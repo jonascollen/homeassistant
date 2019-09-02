@@ -1,0 +1,18 @@
+automation:
+  - alias: Pause sonos when playing media
+    trigger:
+      - platform: state
+        entity_id: media_player.tv
+        to: "playing"
+    condition:
+      - condition: state
+        entity_id: media_player.vardagsrum
+        state: "playing"
+    action:
+      - service: media_player.media_pause
+        data:
+          entity_id: 
+            - media_player.vardagsrum
+            - media_player.kok
+            - media_player.overvaning
+

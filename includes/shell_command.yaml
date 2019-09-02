@@ -1,0 +1,2 @@
+unrar_files: 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/.ssh/id_rsa joco02@192.168.15.8 sudo /media/Downloads/./unrar.sh'
+remove_files: 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /config/.ssh/id_rsa joco02@192.168.15.8 sudo rm -r /media/Downloads/complete/*'

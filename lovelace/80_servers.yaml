@@ -1,0 +1,469 @@
+icon: mdi:server
+name: Servers
+cards:
+
+  # - type: custom:vertical-stack-in-card
+  #   cards:
+
+  #     - type: glance
+  #       title: Network
+  #       entities:
+  #         - entity: binary_sensor.mikrotik
+  #           icon: mdi:earth
+  #         - entity: binary_sensor.edgeswitch
+  #           icon: mdi:network
+  #           name: EdgeSwitch
+  #         - entity: binary_sensor.unifi_ap
+  #           icon: mdi:access-point-network
+  #           name: Unifi AP
+
+  #     - type: glance
+  #       title: Servers
+  #       entities:
+  #         - entity: binary_sensor.nas   
+  #           icon: mdi:harddisk
+  #         - entity: binary_sensor.conbee
+  #           icon: mdi:radio-tower
+  #         - entity: binary_sensor.hue
+  #           icon: mdi:flash
+  #         - entity: binary_sensor.esxi
+
+  #     - type: glance
+  #       title: ESXi
+  #       entities:
+  #         - entity: binary_sensor.webserver
+  #           icon: mdi:web
+  #         - entity: binary_sensor.plex
+  #           icon: mdi:television
+  #         - entity: binary_sensor.management
+  #           icon: mdi:cctv
+  #         - entity: binary_sensor.torrent
+  #           icon: mdi:pirate
+  #           name: Torrents
+
+  #     - type: glance
+  #       title: Sonos
+  #       entities:
+  #         - entity: binary_sensor.sonos_1
+  #           name: Kitchen
+  #           icon: mdi:speaker-wireless
+  #         - entity: binary_sensor.sonos_3
+  #           name: Upstairs
+  #           icon: mdi:speaker-wireless
+  #         - entity: binary_sensor.sonos_5
+  #           name: Livingroom
+  #           icon: mdi:speaker-wireless
+
+
+  - type: custom:vertical-stack-in-card
+    title: Torrents VM
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities: 
+             - sensor.torrents_cpu_load
+            name: CPU
+            icon: mdi:server
+            hours_to_show: 72
+            points_per_hour: 2
+            show:
+              icon: true
+              extrema: false
+              fill: false
+            color_thresholds:
+              - value: 90
+                color: "#d80a0a"
+              - value: 70
+                color: "#03a9f4"
+
+          - type: custom:mini-graph-card
+            entities: 
+             - sensor.torrents_ram_used_percent
+            name: RAM
+            icon: mdi:memory
+            hours_to_show: 72
+            points_per_hour: 4
+            show:
+              icon: true
+              extrema: false
+              fill: false
+            color_thresholds:
+              - value: 90
+                color: "#d80a0a"
+              - value: 70
+                color: "#03a9f4"
+
+          - type: custom:mini-graph-card
+            entities: 
+             - sensor.torrents_disk_used_percent
+            name: Disk usage
+            hours_to_show: 72
+            points_per_hour: 2
+            show:
+              icon: true
+              extrema: false
+              fill: false
+            color_thresholds:
+              - value: 90
+                color: "#d80a0a"
+              - value: 70
+                color: "#03a9f4"
+
+
+          # - type: sensor
+          #   icon: mdi:harddisk
+          #   entity: sensor.torrents_disk_used_percent
+          #   name: Disk usage
+          #   hours_to_show: 24
+          #   graph: line
+          #   detail: 1
+      - type: entities
+        show_header_toggle: false
+        show_icon: true
+        entities:
+          - entity: sensor.torrents_uptime
+            name: Uptime
+            icon: mdi:clock-outline
+          - entity: sensor.torrent_docker_transmission_openvpn
+            name: OpenVPN
+            icon: mdi:security
+          - entity: switch.torrent_docker_sonarr
+            name: Sonarr
+            icon: mdi:television
+          - entity: switch.torrent_docker_radarr
+            name: Radarr
+            icon: mdi:movie
+          - entity: switch.torrent_docker_jackett
+            name: Jackett
+            icon: mdi:magnify  
+          - entity: switch.torrent_docker_transmission_openvpn
+            name: Seedbox
+            icon: mdi:download
+          - entity: switch.transmission
+            name: Turtlemode Transmission
+            icon: mdi:turtle
+          - entity: script.unrar_files
+            name: Unpack files
+            icon: mdi:package-variant
+          - entity: script.remove_files
+            name: Clean up
+            icon: mdi:trash-can-outline
+
+      - type: glance
+        entities:
+          - entity: sensor.transmission_completed_torrents
+            name: Seeding
+            icon: mdi:upload
+          - entity: sensor.transmission_started_torrents
+            name: Running
+            icon: mdi:download
+          - entity: sensor.router_downstream
+            icon: mdi:arrow-down-bold
+            name: Download
+          - entity: sensor.router_upstream
+            icon: mdi:arrow-up-bold
+            name: Upload
+
+  - type: vertical-stack
+    cards:
+       #Plex
+      - type: custom:vertical-stack-in-card
+        title: Plex VM
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                entities: 
+                 - sensor.plex_cpu_load
+                name: CPU
+                icon: mdi:server
+                hours_to_show: 72
+                points_per_hour: 1
+                font_size_header: 12
+                font_size: 90
+                show:
+                  icon: true
+                  extrema: false
+                  fill: false
+                color_thresholds:
+                  - value: 90
+                    color: "#d80a0a"
+                  - value: 70
+                    color: "#03a9f4"
+    
+              - type: custom:mini-graph-card
+                entities: 
+                 - sensor.plex_ram_used_percent
+                name: RAM
+                icon: mdi:memory
+                hours_to_show: 72
+                points_per_hour: 1
+                font_size_header: 12
+                font_size: 90
+                show:
+                  icon: true
+                  extrema: false
+                  fill: false
+                color_thresholds:
+                  - value: 90
+                    color: "#d80a0a"
+                  - value: 70
+                    color: "#03a9f4"
+    
+              - type: custom:mini-graph-card
+                entities: 
+                 - sensor.plex_disk_used_percent
+                name: Disk usage
+                hours_to_show: 72
+                points_per_hour: 1
+                font_size_header: 12
+                font_size: 90
+                show:
+                  icon: true
+                  extrema: false
+                  fill: false
+                color_thresholds:
+                  - value: 90
+                    color: "#d80a0a"
+                  - value: 70
+                    color: "#03a9f4"
+    
+          - type: entities
+            show_header_toggle: false
+            show_icon: true
+            entities:
+              - entity: sensor.plex_uptime
+                name: Uptime
+                icon: mdi:clock-outline
+              - entity: switch.plex_docker_plex
+                name: Plex
+                icon: mdi:television
+              - entity: switch.plex_docker_tautulli
+                name: Tautulli
+                icon: mdi:chart-line
+
+
+    # Webserver
+      - type: custom:vertical-stack-in-card
+        title: Webserver VM
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                entities: 
+                 - sensor.webserver_cpu_load
+                name: CPU
+                icon: mdi:server
+                hours_to_show: 72
+                points_per_hour: 1
+                show:
+                  icon: true
+                  extrema: false
+                  fill: false
+                color_thresholds:
+                  - value: 90
+                    color: "#d80a0a"
+                  - value: 70
+                    color: "#03a9f4"
+    
+              - type: custom:mini-graph-card
+                entities: 
+                 - sensor.webserver_ram_used_percent
+                name: RAM
+                icon: mdi:memory
+                hours_to_show: 72
+                points_per_hour: 1
+                show:
+                  icon: true
+                  extrema: false
+                  fill: false
+                color_thresholds:
+                  - value: 90
+                    color: "#d80a0a"
+                  - value: 70
+                    color: "#03a9f4"
+    
+              - type: custom:mini-graph-card
+                entities: 
+                 - sensor.webserver_disk_used_percent
+                name: Disk usage
+                hours_to_show: 72
+                points_per_hour: 1
+                show:
+                  icon: true
+                  extrema: false
+                  fill: false
+                color_thresholds:
+                  - value: 90
+                    color: "#d80a0a"
+                  - value: 70
+                    color: "#03a9f4"
+    
+          - type: entities
+            show_header_toggle: false
+            show_icon: true
+            entities:
+              - entity: sensor.webserver_uptime
+                name: Uptime
+                icon: mdi:clock-outline
+              - entity: switch.webserver_docker_ombi
+                name: Ombi
+                icon: mdi:web
+
+    # Management VM
+  - type: vertical-stack
+    cards:
+
+        # Management VM
+      - type: custom:vertical-stack-in-card
+        title: Management VM
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                entities: 
+                 - sensor.management_cpu_load
+                name: CPU
+                icon: mdi:server
+                hours_to_show: 72
+                points_per_hour: 1
+                show:
+                  icon: true
+                  extrema: false
+                  fill: false
+                color_thresholds:
+                  - value: 90
+                    color: "#d80a0a"
+                  - value: 70
+                    color: "#03a9f4"
+        
+              - type: custom:mini-graph-card
+                entities: 
+                 - sensor.management_ram_used_percent
+                name: RAM
+                icon: mdi:memory
+                hours_to_show: 72
+                points_per_hour: 1
+                show:
+                  icon: true
+                  extrema: false
+                  fill: false
+                color_thresholds:
+                  - value: 90
+                    color: "#d80a0a"
+                  - value: 70
+                    color: "#03a9f4"
+        
+              - type: custom:mini-graph-card
+                entities: 
+                 - sensor.management_disk_used_percent
+                name: Disk usage
+                hours_to_show: 72
+                points_per_hour: 1
+                show:
+                  icon: true
+                  extrema: false
+                  fill: false
+                color_thresholds:
+                  - value: 90
+                    color: "#d80a0a"
+                  - value: 70
+                    color: "#03a9f4"
+        
+          - type: entities
+            show_header_toggle: false
+            show_icon: true
+            entities:
+              - entity: sensor.management_uptime
+                name: Uptime
+                icon: mdi:clock-outline
+              - entity: switch.management_docker_unifi
+                name: Unifi Controller
+                icon: mdi:wifi
+              - entity: switch.management_docker_portainer
+                name: Portainer
+                icon: mdi:contain
+              - entity: switch.management_docker_organizr
+                name: Organizr
+                icon: mdi:calendar-multiple
+              - entity: switch.management_docker_grafana
+                name: Grafana
+                icon: mdi:chart-bar
+              - entity: switch.management_docker_influxdb
+                name: InfluxDB
+                icon: mdi:database                     
+
+        # Management VM
+      - type: custom:vertical-stack-in-card
+        title: Home Assistant VM
+        cards:
+          # - type: horizontal-stack
+          #   cards:
+          #     - type: custom:mini-graph-card
+          #       entities: 
+          #        - sensor.homeassistant_cpu_load
+          #       name: CPU
+          #       icon: mdi:server
+          #       hours_to_show: 72
+          #       points_per_hour: 1
+          #       show:
+          #         icon: true
+          #         extrema: false
+          #         fill: false
+          #       color_thresholds:
+          #         - value: 90
+          #           color: "#d80a0a"
+          #         - value: 70
+          #           color: "#03a9f4"
+        
+          #     - type: custom:mini-graph-card
+          #       entities: 
+          #        - sensor.homeassistant_ram_used_percent
+          #       name: RAM
+          #       icon: mdi:memory
+          #       hours_to_show: 72
+          #       points_per_hour: 1
+          #       show:
+          #         icon: true
+          #         extrema: false
+          #         fill: false
+          #       color_thresholds:
+          #         - value: 90
+          #           color: "#d80a0a"
+          #         - value: 70
+          #           color: "#03a9f4"
+        
+          #     - type: custom:mini-graph-card
+          #       entities: 
+          #        - sensor.homeassistant_disk_used_percent
+          #       name: Disk usage
+          #       hours_to_show: 72
+          #       points_per_hour: 1
+          #       show:
+          #         icon: true
+          #         extrema: false
+          #         fill: false
+          #       color_thresholds:
+          #         - value: 90
+          #           color: "#d80a0a"
+          #         - value: 70
+          #           color: "#03a9f4"
+        
+          - type: entities
+            show_header_toggle: false
+            show_icon: true
+            entities:
+              - entity: sensor.homeassistant_uptime
+                name: Uptime
+                icon: mdi:clock-outline
+              - entity: sensor.homeassistant_cpu_load
+                name: CPU
+                icon: mdi:server
+              - entity: sensor.homeassistant_ram_used_percent
+                name: RAM
+              - entity: sensor.homeassistant_disk_used_percent
+                name: Disk usage
+              - entity: sensor.home_assistant_v2_db
+                name: Database Filesize
+                icon: mdi:file

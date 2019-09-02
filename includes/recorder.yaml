@@ -1,0 +1,46 @@
+  purge_keep_days: 5
+  purge_interval: 1
+  include:
+    entities:
+      - sensor.kitchen_temp
+      - sensor.bedroom_temp
+      - sensor.washroom_temp
+      - sensor.washroom_temp_hum
+      - sensor.kitchen_temp_hum
+      - sensor.bedroom_temp_hum
+      - sensor.torrents_cpu_load
+      - sensor.torrents_disk_used_percent
+      - sensor.torrents_ram_used_percent
+      - sensor.webserver_cpu_load
+      - sensor.webserver_disk_used_percent
+      - sensor.webserver_ram_used_percent
+      - sensor.management_cpu_load
+      - sensor.management_disk_used_percent
+      - sensor.management_ram_used_percent
+      - sensor.plex_cpu_load
+      - sensor.plex_disk_used_percent
+      - sensor.plex_ram_used_percent
+      - calendar.familj
+      - calendar.sophamtningplast
+      - calendar.sophamtningavfall
+      - device_tracker.jonas_s9
+      - device_tracker.malin_s9
+      - device_tracker.presence_jonas
+      - device_tracker.presence_malin
+      - sensor.jonas
+      - sensor.malin
+
+  exclude:
+    domains:
+      - updater
+      - camera
+      - media_player
+      - sun
+      - zone
+      - group
+      - sensor
+      - binary_sensor
+      - calendar
+      - input_boolean
+      - lights
+      - device_tracker

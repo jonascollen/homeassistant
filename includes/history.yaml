@@ -1,0 +1,29 @@
+  include:
+    entities:
+      - sensor.kitchen_temp
+      - sensor.bedroom_temp
+      - sensor.kitchen_temp_hum
+      - sensor.bedroom_temp_hum
+      - sensor.washroom_temp
+      - sensor.washroom_temp_hum      
+      - sensor.router_upstream
+      - sensor.router_downstream
+      - sensor.torrents_cpu_load
+      - sensor.torrents_disk_used_percent
+      - sensor.torrents_ram_use_percent
+      - sensor.webserver_cpu_load
+      - sensor.webserver_disk_used_percent
+      - sensor.webserver_ram_used_percent
+      - sensor.management_cpu_load
+      - sensor.management_disk_used_percent
+      - sensor.management_ram_used_percent
+      - sensor.plex_cpu_load
+      - sensor.plex_disk_used_percent
+      - sensor.plex_ram_use_percent
+      - device_tracker.jonas_s9
+      - device_tracker.malin_s9
+      - device_tracker.presence_jonas
+      - device_tracker.presence_malin
+      - sensor.jonas
+      - sensor.malin
+      

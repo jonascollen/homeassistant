@@ -7,4 +7,4 @@ automation:
     action:
     - service: frontend.set_theme
       data:
-        name: glassmidnight
+        name: midnightclear

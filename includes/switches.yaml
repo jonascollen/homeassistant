@@ -1,0 +1,93 @@
+# Torrents VM
+
+  - platform: rest
+    resource: http://192.168.15.8:8126/container/jackett
+    name: "torrent_docker_jackett"
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+
+  - platform: rest
+    resource: http://192.168.15.8:8126/container/transmission_openvpn
+    name: "torrent_docker_transmission_openvpn"
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://192.168.15.8:8126/container/sonarr
+    name: "torrent_docker_sonarr"
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://192.168.15.8:8126/container/radarr
+    name: "torrent_docker_radarr"
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+
+# Webserver
+
+  - platform: rest
+    resource: http://192.168.15.5:8126/container/ombi
+    name: "webserver_docker_ombi"
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+# Plex
+
+  - platform: rest
+    resource: http://192.168.15.6:8126/container/plex
+    name: "plex_docker_plex"
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://192.168.15.6:8126/container/tautulli
+    name: "plex_docker_tautulli"
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+# Management
+
+  - platform: rest
+    resource: http://192.168.15.7:8126/container/unifi-controller
+    name: "management_docker_unifi"
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://192.168.15.7:8126/container/organizr
+    name: "management_docker_organizr"
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://192.168.15.7:8126/container/grafana
+    name: "management_docker_grafana"
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://192.168.15.7:8126/container/influxdb
+    name: "management_docker_influxdb"
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://192.168.15.7:8126/container/portainer
+    name: "management_docker_portainer"
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'

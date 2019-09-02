@@ -9,3 +9,226 @@ sensor:
           value_template: '{{ ((states.sensor.mikrotik_router_kbyte_sec_sent.state | int) / 1024) | round(2) }}'
           friendly_name: 'Uppströms'
           unit_of_measurement: 'Mb/s'
+
+  - platform: glances
+    host: 192.168.15.8
+    name: Torrents
+    version: 3
+    resources:
+      - 'disk_use_percent'
+      - 'memory_use_percent'
+
+  - platform: glances
+    host: 192.168.15.6
+    name: Plex
+    version: 3
+    resources:
+      - 'disk_use_percent'
+      - 'memory_use_percent'
+
+  - platform: glances
+    host: 192.168.15.5
+    name: Webserver
+    version: 3
+    resources:
+      - 'disk_use_percent'
+      - 'memory_use_percent'
+ 
+  - platform: glances
+    host: 192.168.15.7
+    name: Management
+    version: 3
+    resources:
+      - 'disk_use_percent'
+      - 'memory_use_percent'
+  
+  - platform: glances
+    host: 192.168.15.9
+    name: Homeassistant
+    version: 3
+    resources:
+      - 'disk_use_percent'
+      - 'memory_use_percent'
+
+  # - platform: glances
+  #   host: 192.168.1.100
+  #   name: Conbee
+  #   version: 2
+  #   resources:
+  #     - 'disk_use_percent'
+  #     - 'memory_use_percent'
+  #     - 'cpu_use_percent'
+  #     - 'cpu_temp'
+
+  # Plex VM
+
+  - platform: rest
+    resource: http://192.168.15.6:61208/api/3/cpu
+    name: "Plex CPU load"
+    value_template: '{{ value_json.total }}'
+    unit_of_measurement: '%'
+    scan_interval: 10
+
+  - platform: rest
+    resource: http://192.168.15.6:61208/api/3/uptime
+    name: "Plex Uptime"
+    value_template: '{{ value_json }}'
+    scan_interval: 60
+
+
+  # Webserver VM
+
+  - platform: rest
+    resource: http://192.168.15.5:61208/api/3/uptime
+    name: "Webserver Uptime"
+    value_template: '{{ value_json }}'
+    scan_interval: 60
+
+  - platform: rest
+    resource: http://192.168.15.5:61208/api/3/cpu
+    name: "Webserver CPU load"
+    value_template: '{{ value_json.total }}'
+    unit_of_measurement: '%'
+    scan_interval: 30
+
+  # Management VM
+
+  - platform: rest
+    resource: http://192.168.15.7:61208/api/3/uptime
+    name: "Management Uptime"
+    value_template: '{{ value_json }}'
+    scan_interval: 60
+
+  - platform: rest
+    resource: http://192.168.15.7:61208/api/3/cpu
+    name: "Management CPU load"
+    value_template: '{{ value_json.total }}'
+    unit_of_measurement: '%'
+    scan_interval: 30
+
+  # Torrents VM
+
+  - platform: rest
+    resource: http://192.168.15.8:61208/api/3/cpu
+    name: "Torrents CPU load"
+    value_template: '{{ value_json.total }}'
+    unit_of_measurement: '%'
+    scan_interval: 10
+
+  - platform: rest
+    resource: http://192.168.15.8:61208/api/3/uptime
+    name: "Torrents Uptime"
+    value_template: '{{ value_json }}'
+    scan_interval: 60
+
+  - platform: rest
+    resource: http://192.168.15.8:8126/container/transmission_openvpn
+    name: "torrent_docker_transmission_openvpn"
+    value_template: '{{ value_json.status }}'
+    scan_interval: 60
+
+  # HomeAssistant VM
+
+  - platform: rest
+    resource: http://192.168.15.9:61208/api/3/uptime
+    name: "Homeassistant Uptime"
+    value_template: '{{ value_json }}'
+    scan_interval: 60
+
+  - platform: rest
+    resource: http://192.168.15.9:61208/api/3/cpu
+    name: "Homeassistant CPU load"
+    value_template: '{{ value_json.total }}'
+    unit_of_measurement: '%'
+    scan_interval: 30
+
+  - platform: filesize
+    file_paths:
+      - /config/home-assistant_v2.db
+
+speedtestdotnet:
+  scan_interval:
+    minutes: 60
+  monitored_conditions:
+    - ping
+  server_id: 4425
+
+esxi_stats:
+  host: 192.168.15.1
+  username: !secret esxi_username
+  password: !secret esxi_password
+  monitored_conditions:
+    - hosts
+    - vms
+    - datastores
+
+transmission:
+  host: 192.168.15.8
+  turtle_mode: true
+  monitored_conditions:
+    - completed_torrents
+    - started_torrents
+
+# binary_sensor:
+#   - platform: ping
+#     host: 192.168.15.254
+#     name: Mikrotik
+#     scan_interval: 30
+#   - platform: ping
+#     host: 192.168.1.5
+#     name: EdgeSwitch
+#     scan_interval: 120
+#   - platform: ping
+#     host: 192.168.15.1
+#     name: ESXi
+#     scan_interval: 30
+#   - platform: ping
+#     host: 192.168.15.5
+#     name: Webserver
+#     scan_interval: 120
+#   - platform: ping
+#     host: 192.168.15.6
+#     name: Plex
+#     scan_interval: 120
+#   - platform: ping
+#     host: 192.168.15.7
+#     name: Management
+#     scan_interval: 120
+#   - platform: ping
+#     host: 192.168.15.8
+#     name: Torrent
+#     scan_interval: 30
+#   - platform: ping
+#     host: 192.168.1.100
+#     name: Conbee
+#     scan_interval: 120
+#   - platform: ping
+#     host: 192.168.1.101
+#     name: NAS
+#     scan_interval: 30
+#   - platform: ping
+#     host: 192.168.1.106
+#     name: Sonos_5
+#     scan_interval: 360
+#   - platform: ping
+#     host: 192.168.1.116
+#     name: Sonos_3
+#     scan_interval: 360
+#   - platform: ping
+#     host: 192.168.1.117
+#     name: Sonos_1
+#     scan_interval: 360
+#   - platform: ping
+#     host: 192.168.1.113
+#     name: Hue
+#     scan_interval: 120
+#   - platform: ping
+#     host: 192.168.1.116
+#     name: Unifi_AP
+#     scan_interval: 30
+
+
+
+
+      
+

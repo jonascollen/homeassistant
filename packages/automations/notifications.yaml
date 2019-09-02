@@ -1,0 +1,25 @@
+automation:
+  - alias: "Notify if Huelight Offline"
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id:
+          - light.gastrum_fonster_h
+          - light.gastrum_fonster_v
+          - light.koksfonster
+          - light.kontor_hylla
+          - light.kontorsfonster
+          - light.laslampa_jonas
+          - light.laslampa_malin
+          - light.overvaning_hall
+          - light.sovrumsfonster
+          - light.vardagsrumsfonster
+        to: 'unavailable'
+        for:
+          seconds: 60
+    action:
+      service: notify.jonas
+      data_template:
+        title: "Hue Light is Offline"
+        message: "{{ trigger.to_state.attributes.friendly_name }} is offline"
+

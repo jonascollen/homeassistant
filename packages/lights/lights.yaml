@@ -16,3 +16,12 @@ group:
     view: no
     entities:
       - light.vardagsrum
+
+  diaperchange:
+    name: Blöjbyte
+    view: no
+    entities:
+      - light.koksfonster
+      - light.vardagsrumsfonster
+      - light.overvaning_hall
+
