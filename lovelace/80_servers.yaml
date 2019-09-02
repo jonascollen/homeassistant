@@ -110,14 +110,6 @@ cards:
               - value: 70
                 color: "#03a9f4"
 
-
-          # - type: sensor
-          #   icon: mdi:harddisk
-          #   entity: sensor.torrents_disk_used_percent
-          #   name: Disk usage
-          #   hours_to_show: 24
-          #   graph: line
-          #   detail: 1
       - type: entities
         show_header_toggle: false
         show_icon: true
