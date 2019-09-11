@@ -109,6 +109,50 @@ cards:
                 color: "#d80a0a"
               - value: 70
                 color: "#03a9f4"
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:mini-graph-card
+            entities: 
+             - sensor.torrent_nas_old
+            name: 'NAS #1'
+            font_size_header: 12
+            font_size: 90
+            align_state: center
+            hours_to_show: 168
+            points_per_hour: 2
+            height: 60
+            icon: mdi:harddisk
+            show:
+              icon: true
+              extrema: false
+              fill: false
+            color_thresholds:
+              - value: 90
+                color: "#d80a0a"
+              - value: 70
+                color: "#03a9f4"
+    
+          - type: custom:mini-graph-card
+            entities: 
+             - sensor.torrent_nas_new
+            name: 'NAS #2'
+            font_size_header: 12
+            font_size: 90
+            align_state: center
+            hours_to_show: 168
+            points_per_hour: 2
+            height: 60
+            icon: mdi:harddisk
+            show:
+              icon: show
+              extrema: false
+              fill: false
+            color_thresholds:
+              - value: 90
+                color: "#d80a0a"
+              - value: 70
+                color: "#03a9f4"
 
       - type: entities
         show_header_toggle: false

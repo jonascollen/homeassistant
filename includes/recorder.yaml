@@ -11,6 +11,8 @@
       - sensor.torrents_cpu_load
       - sensor.torrents_disk_used_percent
       - sensor.torrents_ram_used_percent
+      - sensor.torrent_nas_old
+      - sensor.torrent_nas_new 
       - sensor.webserver_cpu_load
       - sensor.webserver_disk_used_percent
       - sensor.webserver_ram_used_percent

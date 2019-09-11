@@ -17,3 +17,7 @@ outside_lights:
 nightlights_malin:
   name: Nattlampa
   icon: mdi:lamp
+
+guestmode:
+  name: Gäster
+  icon: mdi:guest

@@ -127,6 +127,20 @@ sensor:
     value_template: '{{ value_json.status }}'
     scan_interval: 120
 
+  - platform: rest
+    resource: http://192.168.15.8:61208/api/3/fs
+    name: "torrent_nas_old"
+    value_template: '{{ value_json[4].percent }}'
+    unit_of_measurement: '%'
+    scan_interval: 120
+
+  - platform: rest
+    resource: http://192.168.15.8:61208/api/3/fs
+    name: "torrent_nas_new"
+    value_template: '{{ value_json[5].percent }}'
+    unit_of_measurement: '%'
+    scan_interval: 120
+
   # HomeAssistant VM
 
   - platform: rest

@@ -135,6 +135,17 @@ cards:
               - entity_id: media_player.overvaning
                 name: Sonos Övervåning
 
+        - type: entities
+          show_header_toggle: false
+          #title: Dörrar
+          entities:
+            #- entity: group.all_automations
+            #  name: Automationer
+            #  icon: mdi:robot
+            - entity: input_boolean.guestmode
+              icon: mdi:account
+
+
     ## Kolumn 2
     - type: vertical-stack
       cards:
@@ -317,4 +328,3 @@ cards:
             - calendar.familj
 
 
-             

@@ -1,0 +1,19 @@
+all_lights_guest:
+  name: Alla lampor ex gästrum
+  entities:
+    - light.hall
+    - light.hallswitch 
+    - light.kontor
+    - light.kontorsfonster
+    - light.kok 
+    - light.koksfonster
+    - light.laslampa_jonas
+    - light.laslampa_malin
+    - light.sovrum 
+    - light.sovrum_malin
+    - light.sovrumsfonster
+    - light.vardagsrum
+    - light.vardagsrumsfonster
+    - light.kontor_hylla
+    - light.overvaning
+    - light.overvaning_hall

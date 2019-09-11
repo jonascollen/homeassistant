@@ -35,10 +35,35 @@ automation:
       - platform: state
         entity_id: input_boolean.inside_lights
         to: "off"
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.guestmode
+          state: "off"
+        - condition: state
+          entity_id: input_boolean.nightlights_malin
+          state: "off"
     action:
       - service: light.turn_off
         data:
-          entity_id: light.vardagsbelysning
+          entity_id: group.all_lights
+
+  
+  - alias: Inside Lights - All lights off except guestroom
+    trigger:
+      - platform: state
+        entity_id: input_boolean.inside_lights
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: input_boolean.guestmode
+        state: "on"
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: group.all_lights_guest
+
 
   - alias: Inside Lights - All lights off nightlight on
     trigger:
@@ -54,6 +79,9 @@ automation:
         - condition: state
           entity_id: input_boolean.baby_sleepmode
           state: "on"
+        - condition: state
+          entity_id: input_boolean.guestmode
+          state: "off"
     action:
       - service: hue.hue_activate_scene
         data:
