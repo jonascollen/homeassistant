@@ -113,7 +113,8 @@ automation:
       conditions:
         - condition: time
           after: "21:30"
-          before: "06:00"
+        - condition: sun
+          before: sunrise
         - condition: state
           entity_id: input_boolean.inside_lights
           state: "off"
@@ -137,7 +138,8 @@ automation:
       conditions:
         - condition: time
           after: "21:30"
-          before: "06:00"
+        - condition: sun
+          before: sunrise
         - condition: state
           entity_id: input_boolean.inside_lights
           state: "off"
