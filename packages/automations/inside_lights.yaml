@@ -86,7 +86,7 @@ automation:
       - service: hue.hue_activate_scene
         data:
           group_name: "Vardagsbelysning"
-          scene_name: "Redlight"
+          scene_name: "Redlight_malin"
 
   - alias: Inside Lights - Turn on lights around sunset
     trigger:
@@ -113,6 +113,7 @@ automation:
       conditions:
         - condition: time
           after: "21:30"
+          before: "10:00"
         - condition: sun
           before: sunrise
         - condition: state
@@ -191,3 +192,23 @@ automation:
             - media_player.vardagsrum
             - media_player.kok
             - media_player.overvaning
+
+  - alias: Buggy IKEA-light
+    trigger:
+      - platform: state
+        entity_id: light.kontor_hylla
+        to: "on"
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.inside_lights
+          state: "off"
+        - condition: state
+          entity_id: light.Kontorsfonster
+          state: "off"
+
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: light.kontor_hylla
