@@ -1,8 +1,8 @@
 title: !secret title_address
 
 resources:
-  - url: /community_plugin/compact-custom-header/compact-custom-header.js
-    type: module
+#  - url: /community_plugin/compact-custom-header/compact-custom-header.js
+#    type: module
   - url: /local/custom-lovelace/popup-card.js
     type: js
   - url: /community_plugin/weather-card/weather-card.js
@@ -21,22 +21,23 @@ resources:
     type: js
 
 
-cch:
-  main_config: true
-  background: 'rgba(0,0,0,0)'
-  menu: show
-  options: show
-  voice: show
-  notifications: clock
-  clock_format: '24'
-  clock_date: true
-  date_locale: sv-SE
-  disable: false
+# cch:
+#   main_config: true
+#   background: 'rgba(0,0,0,0)'
+#   menu: show
+#   options: show
+#   voice: show
+#   notifications: clock
+#   clock_format: '24'
+#   clock_date: true
+#   date_locale: sv-SE
+#   disable: false
 
 background: center / cover no-repeat url("/local/backgrounds/background_20.png") fixed
 views:
   - !include lovelace/00_homeview.yaml    
   - !include lovelace/10_security.yaml   
   - !include lovelace/20_weather.yaml   
+  - !include lovelace/70_plants.yaml   
   - !include lovelace/80_servers.yaml   
-  - !include lovelace/90_automations.yaml   
+  - !include lovelace/90_automations.yaml 

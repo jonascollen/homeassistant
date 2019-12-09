@@ -47,7 +47,7 @@ automation:
     action:
       - service: light.turn_off
         data:
-          entity_id: group.all_lights
+          entity_id: group.all_lights_grow
 
   
   - alias: Inside Lights - All lights off except guestroom
@@ -111,11 +111,9 @@ automation:
     condition:
       condition: and
       conditions:
-        - condition: time
-          after: "21:30"
-          before: "10:00"
-        - condition: sun
-          before: sunrise
+        - condition: state
+          entity_id: sun.sun
+          state: below_horizon
         - condition: state
           entity_id: input_boolean.inside_lights
           state: "off"
@@ -182,6 +180,9 @@ automation:
         - condition: state
           entity_id: input_boolean.inside_lights
           state: "on"
+        - condition: state
+          entity_id: input_boolean.guestmode
+          state: "off"
     action:
       - service: input_boolean.turn_off
         data:
@@ -207,8 +208,26 @@ automation:
         - condition: state
           entity_id: light.Kontorsfonster
           state: "off"
-
     action:
       - service: light.turn_off
         data:
           entity_id: light.kontor_hylla
+
+  - alias: Growroom on
+    trigger:
+      - platform: template
+        value_template: "{{ states.sensor.time.state == states.input_datetime.start_time.state[0:5] }}"
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: light.growroom
+
+  - alias: Growroom off
+    trigger:
+      - platform: template
+        value_template: "{{ states.sensor.time.state == states.input_datetime.stop_time.state[0:5] }}"
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: light.growroom
+

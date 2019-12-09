@@ -1,0 +1,78 @@
+icon: mdi:flower
+name: Chili odling
+cards:
+
+
+  - type: vertical-stack
+    cards:
+
+        # Management VM
+      - type: custom:vertical-stack-in-card
+        title: Chili's
+        cards:
+
+        - type: horizontal-stack
+          cards:
+           - type: custom:mini-graph-card
+             entities: 
+              - sensor.growroom_temp
+             name: Temp
+             hours_to_show: 72
+             points_per_hour: 2
+             show:
+               icon: true
+               extrema: false
+               fill: false
+             color_thresholds:
+               - value: 34
+                 color: "#e74c3c"
+               - value: 32
+                 color: "#f2641d"
+               - value: 29
+                 color: "#1db954"
+               - value: 26
+                 color: "#25f7bb"
+               - value: 0
+                 color: "#3498db"    
+        
+           - type: custom:mini-graph-card
+             entities: 
+              - sensor.growroom_temp_hum
+             name: Humidity
+             hours_to_show: 72
+             points_per_hour: 2
+             show:
+               icon: true
+               extrema: false
+               fill: false
+             color_thresholds:
+               - value: 70
+                 color: "#d80a0a"
+               - value: 55
+                 color: "#1acc0e"
+               - value: 30
+                 color: "#aa2c2c"
+
+
+        - type: entities
+          show_header_toggle: false
+          show_icon: true
+          entities:
+            - entity: light.growroom
+              name: TSW2000
+            - entity: light.growroom
+              name: Fan
+              icon: mdi:fan
+            - entity: input_datetime.start_time
+              name: "Lights on"
+            - entity: input_datetime.stop_time
+              name: "Lights off"
+            - entity: automation.growroom_on
+              name: Automation Lights on
+              icon: mdi:robot
+            - entity: automation.growroom_off
+              name: Automation Lights off
+              icon: mdi:robot
+            - entity: automation.growroom_on
+              name: Automation Fan control
+              icon: mdi:fan

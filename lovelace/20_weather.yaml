@@ -58,8 +58,8 @@ cards:
 
       - type: custom:mini-graph-card
         entities: 
-         - sensor.washroom_temp
-        name: Tvättstuga
+         - sensor.growroom_temp
+        name: Odlingstält
         height: 74
         line_width: 3
         font_size: 75
@@ -69,13 +69,13 @@ cards:
           icon: true
           extrema: true
         color_thresholds:
-          - value: 28
+          - value: 34
             color: "#e74c3c"
-          - value: 26
+          - value: 32
             color: "#f2641d"
-          - value: 21
+          - value: 29
             color: "#1db954"
-          - value: 15
+          - value: 26
             color: "#25f7bb"
           - value: 0
             color: "#3498db"    
@@ -125,8 +125,8 @@ cards:
             color: "#aa2c2c"
       - type: custom:mini-graph-card
         entities: 
-         - sensor.washroom_temp_hum
-        name: Luftfuktighet Tvättstuga
+         - sensor.growroom_temp_hum
+        name: Luftfuktighet Oldlingstält
         height: 74
         line_width: 3
         font_size: 75

@@ -67,6 +67,7 @@ cards:
             - "on"
             - "Stängda"
             - "Klart"
+
           entities:
             - entity: sensor.water
               name: "Vattensensorer"     
@@ -149,7 +150,6 @@ cards:
     ## Kolumn 2
     - type: vertical-stack
       cards:
-
         - type: horizontal-stack
           cards:
             # Belysning ute
@@ -286,10 +286,12 @@ cards:
           entities:
             - entity: sensor.kitchen_temp
               name: Kök
-            - entity: sensor.washroom_temp
-              name: Tvättstuga
             - entity: sensor.bedroom_temp
               name: Sovrum      
+            - entity: sensor.growroom_temp
+              name: Odling
+            - entity: light.growroom
+              name: LED
 
         - type: glance
           show_header_toggle: false
@@ -301,7 +303,9 @@ cards:
               icon: mdi:arrow-up-bold
             - entity: sensor.plex
               icon: mdi:television
-              
+    
+
+
         - type: conditional
           conditions: 
           - entity: media_player.plex_chromecast

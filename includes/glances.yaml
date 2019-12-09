@@ -1,0 +1,14 @@
+
+- host: 192.168.15.8
+  name: Torrents
+
+- host: 192.168.15.6
+  name: Plex
+
+- host: 192.168.15.5
+  name: Webserver
+
+- host: 192.168.15.7
+  name: Management
+
+

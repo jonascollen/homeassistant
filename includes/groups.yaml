@@ -17,3 +17,26 @@ all_lights_guest:
     - light.kontor_hylla
     - light.overvaning
     - light.overvaning_hall
+
+all_lights_grow:
+  name: Alla lampor ex grow
+  entities:
+    - light.hall
+    - light.hallswitch 
+    - light.kontor
+    - light.kontorsfonster
+    - light.kok 
+    - light.koksfonster
+    - light.laslampa_jonas
+    - light.laslampa_malin
+    - light.sovrum 
+    - light.sovrum_malin
+    - light.sovrumsfonster
+    - light.vardagsrum
+    - light.vardagsrumsfonster
+    - light.kontor_hylla
+    - light.overvaning
+    - light.overvaning_hall
+    - light.gastrum
+    - light.gastrum_fonster_h
+    - light.gastrum_fonster_v   

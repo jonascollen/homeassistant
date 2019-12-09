@@ -1,0 +1,12 @@
+start_time:
+  name: growroom_lights_on
+  has_date: false
+  has_time: true
+  initial: "06:00"
+
+stop_time:
+  name: growroom_lights_off
+  has_date: false
+  has_time: true
+  initial: "23:00"
+

@@ -1,0 +1,2 @@
+host: "192.168.15.6"
+token: !secret plex_token

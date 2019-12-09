@@ -4,8 +4,8 @@
       - sensor.bedroom_temp
       - sensor.kitchen_temp_hum
       - sensor.bedroom_temp_hum
-      - sensor.washroom_temp
-      - sensor.washroom_temp_hum      
+      - sensor.growroom_temp
+      - sensor.growroom_temp_hum      
       - sensor.router_upstream
       - sensor.router_downstream
       - sensor.torrents_cpu_load

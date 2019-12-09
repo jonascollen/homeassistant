@@ -1,6 +1,0 @@
-sensor:
-  # Plex
-  - platform: plex
-    host: "192.168.15.6"
-    username: !secret plex_username
-    password: !secret plex_password

@@ -22,8 +22,8 @@ lovelace:
 http:
   base_url: !secret base_url
 
-hacs:
-  token: !secret hacs_token
+#hacs:
+#  token: !secret hacs_token
 
 # Fail2ban
 logger:
@@ -56,6 +56,7 @@ google:
   client_id: !secret google_client_id
   client_secret: !secret google_client_secret
 
+glances: !include includes/glances.yaml
 frontend: !include includes/frontend.yaml
 history: !include includes/history.yaml
 recorder: !include includes/recorder.yaml
@@ -65,7 +66,11 @@ script: !include includes/scripts.yaml
 switch: !include includes/switches.yaml
 zone: !include includes/zones.yaml
 input_boolean: !include includes/input_boolean.yaml
+input_datetime: !include includes/input_datetime.yaml
 shell_command: !include includes/shell_command.yaml
+
+#plex: !include includes/plex.yaml
+#unifi: !include includes/unifi.yaml
 python_script:
 
 # GPS Locator

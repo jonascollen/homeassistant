@@ -1,8 +1,0 @@
-# Wireless Controller
-- platform: unifi
-  host: "192.168.15.7"
-  username: !secret unifi_username
-  password: !secret unifi_password
-  verify_ssl: false
-  ssid_filter:
-    - 'B25'

@@ -176,7 +176,7 @@ cards:
           - entity: switch.torrent_docker_transmission_openvpn
             name: Seedbox
             icon: mdi:download
-          - entity: switch.transmission
+          - entity: switch.transmission_turtle_mode
             name: Turtlemode Transmission
             icon: mdi:turtle
           - entity: script.unrar_files
@@ -493,12 +493,12 @@ cards:
               - entity: sensor.homeassistant_uptime
                 name: Uptime
                 icon: mdi:clock-outline
-              - entity: sensor.homeassistant_cpu_load
+              - entity: sensor.glances_cpu_load
                 name: CPU
                 icon: mdi:server
-              - entity: sensor.homeassistant_ram_used_percent
+              - entity: sensor.glances_ram_used_percent
                 name: RAM
-              - entity: sensor.homeassistant_disk_used_percent
+              - entity: sensor.glances_disk_used_percent
                 name: Disk usage
               - entity: sensor.home_assistant_v2_db
                 name: Database Filesize

@@ -16,7 +16,7 @@ cards:
           - entity: automation.inside_lights_all_lights_on_baby_awake
           - entity: automation.inside_lights_some_lights_on_baby_sleeps
           - entity: automation.inside_lights_all_lights_off
-          - entity: automatino_inside_lights_all_lights_off_nightlight_on
+          - entity: automation.inside_lights_all_lights_off_nightlight_on
           - type: divider
           - entity: automation.motion_sensors_lights_on
           - entity: automation.motion_sensors_lights_off
@@ -31,7 +31,10 @@ cards:
           - type: divider
           - entity: automation.jonas_workmode_on
           - entity: automation.jonas_workmode_off_turn_off_lights
-          - entity: automation.jonas_workmode_off_turn_on_lights     
+          - entity: automation.jonas_workmode_off_turn_on_lights
+          - type: divider
+          - entity: automation.growroom_on
+          - entity: automation.growroom_off           
   - type: vertical-stack
     cards:                 
       - type: entities
