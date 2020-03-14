@@ -6,6 +6,10 @@ baby_sleepmode:
   name: Baby Sleepmode
   icon: mdi:sleep
 
+baby_nighttime:
+  name: Baby Nighttime
+  icon: mdi:sleep
+
 inside_lights:
   name: Belysning
   icon: mdi:lamp

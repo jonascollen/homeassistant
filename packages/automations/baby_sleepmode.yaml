@@ -28,5 +28,64 @@ automation:
           scene_name: "Sovrum_evening"
   
 
-  
-  
+  - alias: Baby Nighttime - On
+    trigger:
+      - platform: state
+        entity_id: input_boolean.baby_nighttime
+        to: "on"
+    action:
+      - service: hue.hue_activate_scene
+        data:
+          group_name: "Vardagsbelysning"
+          scene_name: "baby_nighttime"  
+      - service: sonos.unjoin
+        data:
+          entity_id: media_player.overvaning
+      - service: media_player.volume_set
+        data:
+          entity_id: media_player.overvaning  
+          volume_level: "0.1"
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.overvaning  
+          source: "Peaceful Piano"
+
+  - alias: Baby Nighttime - Off Sleeping
+    trigger:
+      - platform: state
+        entity_id: input_boolean.baby_nighttime
+        to: "off"
+    condition:
+      condition: and
+      conditions:
+      - condition: state
+        entity_id: input_boolean.inside_lights
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.baby_sleepmode
+        state: "on"
+    action:
+      - service: hue.hue_activate_scene
+        data:
+          group_name: "Vardagsbelysning"
+          scene_name: "Evening_nobedroom"
+
+  - alias: Baby Nighttime - Off Awake
+    trigger:
+      - platform: state
+        entity_id: input_boolean.baby_nighttime
+        to: "off"
+    condition:
+      condition: and
+      conditions:
+      - condition: state
+        entity_id: input_boolean.inside_lights
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.baby_sleepmode
+        state: "off"
+    action:
+      - service: hue.hue_activate_scene
+        data:
+          group_name: "Vardagsbelysning"
+          scene_name: "Evening_all"

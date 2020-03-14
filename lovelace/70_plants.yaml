@@ -75,4 +75,4 @@ cards:
               icon: mdi:robot
             - entity: automation.growroom_on
               name: Automation Fan control
-              icon: mdi:fan
+              icon: mdi:robot

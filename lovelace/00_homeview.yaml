@@ -195,6 +195,11 @@ cards:
               toggle: true
               icon: mdi:laptop
             - type: custom:slider-entity-row
+              entity: light.barnrum
+              hide_when_off: true
+              toggle: true
+              icon: mdi:baby-face-outline
+            - type: custom:slider-entity-row
               entity: light.gastrum
               hide_when_off: true
               toggle: true
@@ -262,14 +267,14 @@ cards:
               state_image:
                 "on": /local/buttons/work.jpg
                 "off": /local/buttons/workbw.jpg
-              name: Nattjobb
+              name: Nattning
               show_state: false
               tap_action:
                 action: call-service
                 service: input_boolean.toggle
                 service_data:
-                  entity_id: input_boolean.jonas_workmode
-              entity: input_boolean.jonas_workmode
+                  entity_id: input_boolean.baby_nighttime
+              entity: input_boolean.baby_nighttime
 
                    
     ## Kolumn 3

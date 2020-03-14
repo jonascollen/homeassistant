@@ -14,9 +14,11 @@ all_lights_guest:
     - light.sovrumsfonster
     - light.vardagsrum
     - light.vardagsrumsfonster
+    - light.vardagsrums_horn
     - light.kontor_hylla
     - light.overvaning
-    - light.overvaning_hall
+    - light.overvaning_tak
+    - light.barnrum
 
 all_lights_grow:
   name: Alla lampor ex grow
@@ -34,9 +36,11 @@ all_lights_grow:
     - light.sovrumsfonster
     - light.vardagsrum
     - light.vardagsrumsfonster
+    - light.vardagsrums_horn
     - light.kontor_hylla
     - light.overvaning
-    - light.overvaning_hall
+    - light.overvaning_tak
     - light.gastrum
     - light.gastrum_fonster_h
     - light.gastrum_fonster_v   
+    - light.barnrum
