@@ -1,7 +1,6 @@
 group:
   lampor:
     name: Belysning
-    view: no
     entities:
       - light.hall
       - light.kok
@@ -14,13 +13,11 @@ group:
 
   utebelysning:
     name: Utebelysning
-    view: no
     entities:
       - light.vardagsrum
 
   diaperchange:
     name: Blöjbyte
-    view: no
     entities:
       - light.koksfonster
       - light.vardagsrumsfonster

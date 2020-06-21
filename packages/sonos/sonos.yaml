@@ -9,7 +9,6 @@ sonos:
 group:
   sonos:
     name: Sonos
-    view: no
     entities:
       - media_player.kok
       - media_player.vardagsrum

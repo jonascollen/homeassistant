@@ -2,10 +2,6 @@ icon: mdi:shield-home
 name: Security
 cards:
 
-  - type: alarm-panel
-    name: Larm
-    entity: alarm_control_panel.alarm
-
   - type: vertical-stack
     cards:
 

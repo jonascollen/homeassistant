@@ -18,6 +18,25 @@ discovery:
 
 lovelace:
   mode: yaml
+  resources:
+    - url: /local/custom-lovelace/popup-card.js
+      type: js
+    - url: /hacsfiles/weather-card/weather-card.js
+      type: module 
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
+    - url: /hacsfiles/calendar-card/calendar-card.js
+      type: js
+    - url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
+      type: module
+    - url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
+      type: module
+    - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
+      type: js
+    - url: https://fonts.googleapis.com/css?family=Comfortaa&display=swap
+      type: css
+    - url: /local/mini-media-player-bundle.js?v=1.9.1
+      type: module
 
 http:
   base_url: !secret base_url
@@ -57,10 +76,10 @@ google:
   client_secret: !secret google_client_secret
 
 glances: !include includes/glances.yaml
-frontend: !include includes/frontend.yaml
+frontend: 
+  themes: !include_dir_merge_named themes
 history: !include includes/history.yaml
 recorder: !include includes/recorder.yaml
-device_tracker: !include includes/device_tracker.yaml
 group: !include includes/groups.yaml
 script: !include includes/scripts.yaml
 switch: !include includes/switches.yaml

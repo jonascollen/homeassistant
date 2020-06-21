@@ -9,19 +9,19 @@
       - sensor.router_upstream
       - sensor.router_downstream
       - sensor.torrents_cpu_load
-      - sensor.torrents_disk_used_percent
-      - sensor.torrents_ram_use_percent
+      - sensor.torrents_used_percent
+      - sensor.torrents_ram_use_percent_2
       - sensor.torrent_nas_old
       - sensor.torrent_nas_new  
       - sensor.webserver_cpu_load
-      - sensor.webserver_disk_used_percent
-      - sensor.webserver_ram_used_percent
+      - sensor.webserver_used_percent
+      - sensor.webserver_ram_used_percent_2
       - sensor.management_cpu_load
-      - sensor.management_disk_used_percent
-      - sensor.management_ram_used_percent
+      - sensor.management_used_percent
+      - sensor.management_ram_used_percent_2
       - sensor.plex_cpu_load
-      - sensor.plex_disk_used_percent
-      - sensor.plex_ram_use_percent
+      - sensor.plex_used_percent
+      - sensor.plex_ram_use_percent_2
       - device_tracker.jonas_s9
       - device_tracker.malin_s9
       - device_tracker.presence_jonas

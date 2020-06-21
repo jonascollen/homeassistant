@@ -1,7 +1,6 @@
 group:
   doors:
     name: Dörrar
-    view: no
     entities:
       - binary_sensor.entre_door
       - binary_sensor.kitchen_door

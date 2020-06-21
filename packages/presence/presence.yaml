@@ -1,7 +1,6 @@
 group:
   familytracker:
     name: Family
-    view: no
     entities:
       - device_tracker.presence_jonas
       - device_tracker.presence_malin
@@ -10,7 +9,6 @@ group:
 
   family:
     name: Family
-    view: no
     entities:
       - device_tracker.jonas_s9
       - device_tracker.malin_s9

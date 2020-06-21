@@ -1,25 +1,5 @@
 title: !secret title_address
 
-resources:
-#  - url: /community_plugin/compact-custom-header/compact-custom-header.js
-#    type: module
-  - url: /local/custom-lovelace/popup-card.js
-    type: js
-  - url: /community_plugin/weather-card/weather-card.js
-    type: module 
-  - url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
-    type: module
-  - url: /community_plugin/mini-media-player/mini-media-player.js
-    type: module
-  - url: /community_plugin/calendar-card/calendar-card.js
-    type: js
-  - url: /community_plugin/simple-weather-card/simple-weather-card-bundle.js
-    type: module
-  - url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
-    type: module
-  - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
-    type: js
-
 
 # cch:
 #   main_config: true
@@ -40,4 +20,3 @@ views:
   - !include lovelace/20_weather.yaml   
   - !include lovelace/70_plants.yaml   
   - !include lovelace/80_servers.yaml   
-  - !include lovelace/90_automations.yaml 
