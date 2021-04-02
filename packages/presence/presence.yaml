@@ -10,7 +10,7 @@ group:
   family:
     name: Family
     entities:
-      - device_tracker.jonas_s9
+      - device_tracker.jonas_s20
       - device_tracker.malin_s9
       #- device_tracker.malin_s9
 
@@ -18,12 +18,12 @@ group:
     name: Jonas Devices
     entities:
      # - device_tracker.jonas_jonass9
-      - device_tracker.jonas_s9
+      - device_tracker.jonas_s20
 
   malin:
     name: Malins Devices
     entities:
-      - device_tracker.malin_s9
+      - device_tracker.galaxy_s7
 
 sensor:
 ## Presence-sensor for mainview     

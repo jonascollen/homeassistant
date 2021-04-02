@@ -212,21 +212,21 @@ automation:
         data:
           entity_id: light.kontor_hylla
 
-  - alias: Growroom on
-    trigger:
-      - platform: template
-        value_template: "{{ states.sensor.time.state == states.input_datetime.start_time.state[0:5] }}"
-    action:
-      - service: light.turn_on
-        data:
-          entity_id: light.growroom
+  # - alias: Growroom on
+  #   trigger:
+  #     - platform: template
+  #       value_template: "{{ states.sensor.time.state == states.input_datetime.start_time.state[0:5] }}"
+  #   action:
+  #     - service: light.turn_on
+  #       data:
+  #         entity_id: light.growroom
 
-  - alias: Growroom off
-    trigger:
-      - platform: template
-        value_template: "{{ states.sensor.time.state == states.input_datetime.stop_time.state[0:5] }}"
-    action:
-      - service: light.turn_off
-        data:
-          entity_id: light.growroom
+  # - alias: Growroom off
+  #   trigger:
+  #     - platform: template
+  #       value_template: "{{ states.sensor.time.state == states.input_datetime.stop_time.state[0:5] }}"
+  #   action:
+  #     - service: light.turn_off
+  #       data:
+  #         entity_id: light.growroom
 

@@ -199,6 +199,12 @@ cards:
               hide_when_off: true
               toggle: true
               icon: mdi:baby-face-outline
+            # - type: custom:slider-entity-row
+            #   entity: light.tent
+            #   name: Tält
+            #   hide_when_off: true
+            #   toggle: true
+            #   icon: mdi:baby-face-outline
             - type: custom:slider-entity-row
               entity: light.gastrum
               hide_when_off: true
@@ -294,9 +300,7 @@ cards:
             - entity: sensor.bedroom_temp
               name: Sovrum      
             - entity: sensor.growroom_temp
-              name: Odling
-            - entity: light.growroom
-              name: LED
+              name: Barnrum
 
         - type: glance
           show_header_toggle: false
